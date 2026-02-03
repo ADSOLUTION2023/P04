@@ -27,7 +27,7 @@
 
 	<h1 align="center">
 	<font size="10px" color="red"> 
-	<a href="<%=ORSView.WELCOME_CTL%>">Online Result System(03-02-2026)</a></font>
+	<a href="<%=ORSView.WELCOME_CTL%>">Online Result System my first project</a></font>
 </h1>
 </html>
 
