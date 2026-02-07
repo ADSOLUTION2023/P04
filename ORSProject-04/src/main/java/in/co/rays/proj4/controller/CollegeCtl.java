@@ -142,7 +142,7 @@ public class CollegeCtl extends BaseCtl {
                 ServletUtility.setBean(bean, request);
             } catch (ApplicationException e) {
                 e.printStackTrace();
-                ServletUtility.handleException(e, request, response);
+                ServletUtility.handleException(e, request, response,getView());
                 return;
             }
         }
@@ -208,7 +208,7 @@ public class CollegeCtl extends BaseCtl {
 
             } catch (ApplicationException e) {
                 e.printStackTrace();
-                ServletUtility.handleException(e, request, response);
+                ServletUtility.handleException(e, request, response,getView());
                 return;
             }
         }

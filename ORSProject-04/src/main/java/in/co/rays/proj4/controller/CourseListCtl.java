@@ -35,7 +35,7 @@ public class CourseListCtl extends BaseCtl {
      * @param request the HTTP request object
      */
     @Override
-    protected void preload(HttpServletRequest request) {
+    protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         CourseModel courseModel = new CourseModel();
 
@@ -99,7 +99,7 @@ public class CourseListCtl extends BaseCtl {
 
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response);
+            ServletUtility.handleException(e, request, response,getView());
             return;
         }
     }
@@ -187,7 +187,7 @@ public class CourseListCtl extends BaseCtl {
 
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response);
+            ServletUtility.handleException(e, request, response,getView());
             return;
         }
     }

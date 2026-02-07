@@ -38,7 +38,7 @@ public class UserListCtl extends BaseCtl {
      * @param request the HttpServletRequest
      */
     @Override
-    protected void preload(HttpServletRequest request) {
+    protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
     	
     	log.debug("UserListCtl Method preload started");
     	

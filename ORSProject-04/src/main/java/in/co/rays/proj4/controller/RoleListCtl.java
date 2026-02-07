@@ -37,7 +37,7 @@ public class RoleListCtl extends BaseCtl {
      * @param request HttpServletRequest
      */
     @Override
-    protected void preload(HttpServletRequest request) {
+    protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         RoleModel roleModel = new RoleModel();
         try {
             List roleList = roleModel.list();
@@ -91,7 +91,7 @@ public class RoleListCtl extends BaseCtl {
             ServletUtility.forward(getView(), request, response);
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response);
+            ServletUtility.handleException(e, request, response,getView());
             return;
         }
     }
@@ -168,7 +168,7 @@ public class RoleListCtl extends BaseCtl {
             ServletUtility.forward(getView(), request, response);
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response);
+            ServletUtility.handleException(e, request, response,getView());
             return;
         }
 

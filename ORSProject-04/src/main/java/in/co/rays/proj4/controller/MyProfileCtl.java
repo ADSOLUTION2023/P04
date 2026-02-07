@@ -137,7 +137,7 @@ public class MyProfileCtl extends BaseCtl {
                 ServletUtility.setBean(bean, request);
             } catch (ApplicationException e) {
                 e.printStackTrace();
-                ServletUtility.handleException(e, request, response);
+                ServletUtility.handleException(e, request, response,getView());
                 return;
             }
         }
@@ -181,7 +181,7 @@ public class MyProfileCtl extends BaseCtl {
                 ServletUtility.setErrorMessage("Login id already exists", request);
             } catch (ApplicationException e) {
                 e.printStackTrace();
-                ServletUtility.handleException(e, request, response);
+                ServletUtility.handleException(e, request, response,getView());
                 return;
             }
         } else if (OP_CHANGE_MY_PASSWORD.equalsIgnoreCase(op)) {

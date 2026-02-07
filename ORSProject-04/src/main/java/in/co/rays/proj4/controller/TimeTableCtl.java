@@ -38,7 +38,7 @@ public class TimeTableCtl extends BaseCtl {
      * @param request the HTTP request containing attributes
      */
     @Override
-    protected void preload(HttpServletRequest request) {
+    protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         SubjectModel subjectModel = new SubjectModel();
         CourseModel courseModel = new CourseModel();
@@ -150,7 +150,7 @@ public class TimeTableCtl extends BaseCtl {
                 ServletUtility.setBean(bean, request);
             } catch (ApplicationException e) {
                 e.printStackTrace();
-                ServletUtility.handleException(e, request, response);
+                ServletUtility.handleException(e, request, response, getView());
                 return;
             }
         }
@@ -201,7 +201,7 @@ public class TimeTableCtl extends BaseCtl {
                 ServletUtility.setErrorMessage("Timetable already exist!", request);
             } catch (ApplicationException e) {
                 e.printStackTrace();
-                ServletUtility.handleException(e, request, response);
+                ServletUtility.handleException(e, request, response, getView());
                 return;
             }
 
@@ -230,7 +230,7 @@ public class TimeTableCtl extends BaseCtl {
                 ServletUtility.setErrorMessage("Timetable already exist!", request);
             } catch (ApplicationException e) {
                 e.printStackTrace();
-                ServletUtility.handleException(e, request, response);
+                ServletUtility.handleException(e, request, response, getView());
                 return;
             }
         } else if (OP_CANCEL.equalsIgnoreCase(op)) {

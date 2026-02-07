@@ -43,7 +43,7 @@ public class UserRegistrationCtl extends BaseCtl {
 	
 	
 	@Override
-	protected void preload(HttpServletRequest request) {
+	protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("Female", "Female");
 		map.put("Male", "Male");

@@ -25,7 +25,7 @@ import in.co.rays.proj4.util.ServletUtility;
 public class MarkSheetCtl extends BaseCtl{
 	
 	@Override
-	protected void preload(HttpServletRequest request) {
+	protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		StudentModel StudentModel = new StudentModel();
 		List<StudentBean> studentList;
 		try {
@@ -34,7 +34,7 @@ public class MarkSheetCtl extends BaseCtl{
 		} catch (ApplicationException e) {
 			e.printStackTrace();
 		}
-		super.preload(request);
+		super.preload(request,response);
 	}
 	
 	

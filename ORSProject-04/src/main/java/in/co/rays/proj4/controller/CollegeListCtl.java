@@ -48,7 +48,7 @@ public class CollegeListCtl extends BaseCtl {
      * @param request the {@link HttpServletRequest}
      */
     @Override
-    protected void preload(HttpServletRequest request) {
+   protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         CollegeModel collegeModel = new CollegeModel();
 
@@ -116,7 +116,7 @@ public class CollegeListCtl extends BaseCtl {
 
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response);
+            ServletUtility.handleException(e, request, response,getView());
             return;
         }
     }
@@ -212,7 +212,7 @@ public class CollegeListCtl extends BaseCtl {
 
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response);
+            ServletUtility.handleException(e, request, response,getView());
             return;
         }
     }

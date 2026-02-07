@@ -40,7 +40,7 @@ public class TimeTableListCtl extends BaseCtl {
      * @param request the HttpServletRequest containing client request data
      */
     @Override
-    protected void preload(HttpServletRequest request) {
+    protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         SubjectModel subjectModel = new SubjectModel();
         CourseModel courseModel = new CourseModel();
 
@@ -108,7 +108,7 @@ public class TimeTableListCtl extends BaseCtl {
 
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response);
+            ServletUtility.handleException(e, request, response, getView());
         }
     }
 
@@ -192,7 +192,7 @@ public class TimeTableListCtl extends BaseCtl {
 
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response);
+            ServletUtility.handleException(e, request, response, getView());
         }
     }
 

@@ -40,7 +40,7 @@ public class StudentCtl extends BaseCtl {
      * @param request HttpServletRequest
      */
     @Override
-    protected void preload(HttpServletRequest request) {
+    protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         CollegeModel collegeModel = new CollegeModel();
         try {
             List<CollegeBean> collegeList = collegeModel.list();
@@ -193,7 +193,7 @@ public class StudentCtl extends BaseCtl {
                 ServletUtility.setErrorMessage("Email already exists", request);
             } catch (ApplicationException e) {
                 e.printStackTrace();
-                ServletUtility.handleException(e, request, response);
+                ServletUtility.handleException(e, request, response,getView());
             }
         } else if (OP_CANCEL.equalsIgnoreCase(op)) {
             ServletUtility.redirect(ORSView.STUDENT_LIST_CTL, request, response);

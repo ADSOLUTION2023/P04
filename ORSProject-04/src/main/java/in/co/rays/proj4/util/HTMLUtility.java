@@ -1,5 +1,6 @@
 package in.co.rays.proj4.util;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -31,16 +32,30 @@ public class HTMLUtility {
 		return sb.toString();
 	}
 
+
 	public static String getList(String name, String selectedVal, List list) {
 
-		// Collections.sort(list);
+		if (list == null) {
+			list = new java.util.ArrayList();
+		}
+
+		Collections.sort(list);
+		StringBuffer sb = new StringBuffer(
+				"<select class='form-control' style='border: 2px solid #8080803b;' class='form-control' name='" + name
+						+ "'>");
+
+		boolean select = true;
+		if (select) {
+
+			sb.append(
+					"<option class='dropdown-item' style='border: 2px solid #8080803b;' selected value=''>------Select a "
+							+ name + "---------</option>");
+		}
 
 		List<DropdownListBean> dd = (List<DropdownListBean>) list;
 
-		StringBuffer sb = new StringBuffer("<select style=\"width: 169px;text-align-last: center;\"; "
-				+ "class='form-control' name='" + name + "'>");
-
-		sb.append("\n<option selected value=''>-------------Select-------------</option>");
+		// StringBuffer sb = new StringBuffer( "<select style='width: 163px; height:
+		// 23px;' class='form-control' name='" + name + "'>");
 
 		String key = null;
 		String val = null;
@@ -50,12 +65,13 @@ public class HTMLUtility {
 			val = obj.getValue();
 
 			if (key.trim().equals(selectedVal)) {
-				sb.append("\n<option selected value='" + key + "'>" + val + "</option>");
+				sb.append("<option selected value='" + key + "'>" + val + "</option>");
 			} else {
-				sb.append("\n<option value='" + key + "'>" + val + "</option>");
+				sb.append("<option value='" + key + "'>" + val + "</option>");
 			}
 		}
-		sb.append("\n</select>");
+		sb.append("</select>");
+		System.out.println("get list 2=========" + sb.toString());
 		return sb.toString();
 	}
 

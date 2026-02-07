@@ -82,7 +82,7 @@ public class FacultyListCtl extends BaseCtl {
 
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response);
+            ServletUtility.handleException(e, request, response,getView());
         }
     }
 
@@ -161,7 +161,7 @@ public class FacultyListCtl extends BaseCtl {
 
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response);
+            ServletUtility.handleException(e, request, response,getView());
         }
     }
 

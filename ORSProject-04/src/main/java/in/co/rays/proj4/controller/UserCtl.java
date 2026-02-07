@@ -1,4 +1,3 @@
-
 package in.co.rays.proj4.controller;
 
 import java.io.IOException;
@@ -42,21 +41,26 @@ public class UserCtl extends BaseCtl {
 
 	/**
 	 * Preloads list of roles to populate role dropdown in the form.
+	 * @throws ServletException 
+	 * @throws IOException 
 	 */
 	@Override
-	protected void preload(HttpServletRequest request) {
-		log.debug("UserCtl Method preload started");
-		RoleModel roleModel = new RoleModel();
+	protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	    log.debug("UserCtl Method preload started");
+	    RoleModel roleModel = new RoleModel();
 
-		try {
-			List<RoleBean> roleList = roleModel.list();
-			request.setAttribute("roleList", roleList);
-		} catch (ApplicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		log.debug("UserCtl Method preload ended");
-	}
+	    try {
+	        List<RoleBean> roleList = roleModel.list();
+	        request.setAttribute("roleList", roleList);
+	    } catch (ApplicationException e) {
+            e.printStackTrace();
+			ServletUtility.setErrorMessage("Database server down!!!", request);
+
+            ServletUtility.handleException(e, request, response, getView());
+            return;
+        }
+	    log.debug("UserCtl Method preload ended");
+	}		
 
 	/**
 	 * Validates the user form input.
@@ -202,8 +206,10 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.setErrorMessage("Database Server Down...", request);
+				ServletUtility.handleException(e,request, response,getView());
 				return;
+				
 			}
 		}
 		ServletUtility.forward(getView(), request, response);
@@ -234,7 +240,7 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Login Id already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e,request, response,getView());
 				return;
 			
 			}
@@ -252,10 +258,9 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Login Id already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e,request, response,getView());
 				return;
 			}
-
 		} else if (OP_CANCEL.equalsIgnoreCase(op)) {
 			ServletUtility.redirect(ORSView.USER_LIST_CTL, request, response);
 			return;

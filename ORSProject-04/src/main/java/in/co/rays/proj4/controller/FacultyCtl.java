@@ -41,7 +41,7 @@ public class FacultyCtl extends BaseCtl {
      * @param request HTTP request object
      */
     @Override
-    protected void preload(HttpServletRequest request) {
+    protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         CollegeModel collegeModel = new CollegeModel();
         SubjectModel subjectModel = new SubjectModel();
@@ -185,7 +185,7 @@ public class FacultyCtl extends BaseCtl {
                 ServletUtility.setBean(bean, request);
             } catch (ApplicationException e) {
                 e.printStackTrace();
-                ServletUtility.handleException(e, request, response);
+                ServletUtility.handleException(e, request, response,getView());
                 return;
             }
         }
@@ -240,7 +240,7 @@ public class FacultyCtl extends BaseCtl {
 
             } catch (ApplicationException e) {
                 e.printStackTrace();
-                ServletUtility.handleException(e, request, response);
+                ServletUtility.handleException(e, request, response,getView());
                 return;
             }
 
