@@ -248,7 +248,7 @@ public class RoleModel {
 	 * @return List of RoleBean
 	 * @throws ApplicationException if a SQL error occurs during retrieval
 	 */
-	public List<RoleBean> list() throws ApplicationException {
+	public List list() throws ApplicationException {
 		return search(null, 0, 0);
 	}
 	

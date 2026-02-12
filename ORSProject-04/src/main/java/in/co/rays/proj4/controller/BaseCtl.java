@@ -65,7 +65,7 @@ public abstract class BaseCtl extends HttpServlet {
      *
      * @param request HttpServletRequest object
      */
-	protected void preload(HttpServletRequest request, HttpServletResponse responses) throws IOException, ServletException {
+	protected void preload(HttpServletRequest request , HttpServletResponse response) throws IOException, ServletException {
 	}
 
     /**
@@ -132,7 +132,7 @@ public abstract class BaseCtl extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        preload(request,response);
+        preload(request, response);
 
         String op = DataUtility.getString(request.getParameter("operation"));
         System.out.println("Operation: " + op);

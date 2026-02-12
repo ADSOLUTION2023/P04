@@ -44,6 +44,19 @@ public class DataValidator {
 		}
 	}
 
+	public static boolean isDouble(String val) {
+		if (isNotNull(val)) {
+			try {
+				Double.parseDouble(val);
+				return true;
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
 	public static boolean isEmail(String val) {
 
 		String emailreg = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -122,6 +135,20 @@ public class DataValidator {
 		if (isNotNull(val)) {
 			try {
 				return val.matches(phonereg);
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		} else {
+			return false;
+		}
+		}
+	public static boolean isBalance(String val) {
+
+		String balancereg = "^[6-9][0-9]{9}$";
+
+		if (isNotNull(val)) {
+			try {
+				return val.matches(balancereg);
 			} catch (NumberFormatException e) {
 				return false;
 			}
@@ -227,4 +254,3 @@ public class DataValidator {
 		System.out.println("Date not on Sunday: '10/15/2024' -> " + isSunday("10/15/2024"));
 	}
 }
-

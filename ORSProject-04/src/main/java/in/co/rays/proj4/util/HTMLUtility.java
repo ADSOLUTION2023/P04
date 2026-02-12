@@ -39,7 +39,7 @@ public class HTMLUtility {
 			list = new java.util.ArrayList();
 		}
 
-		Collections.sort(list);
+		//Collections.sort(list);
 		StringBuffer sb = new StringBuffer(
 				"<select class='form-control' style='border: 2px solid #8080803b;' class='form-control' name='" + name
 						+ "'>");

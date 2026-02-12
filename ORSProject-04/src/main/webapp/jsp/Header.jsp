@@ -99,7 +99,11 @@ pageEncoding="ISO-8859-1"%>
 	<a href="<%=ORSView.JAVA_DOC%>" target="blank"><b>Java Doc</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>"><b>Logout</b></a>
-    
+	<b>|</b>
+    <a href="<%=ORSView.PATIENT_CTL%>"><b>Add Patient</b></a>
+	<b>|</b>
+	<a href="<%=ORSView.PATIENT_LIST_CTL%>"><b>Patient List</b></a>
+	<b>|</b>
 	<%
 		}
 	%>

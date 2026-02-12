@@ -3,7 +3,7 @@ package in.co.rays.proj4.bean;
 /**
  * Role JavaBean encapsulates Role attributes.
  * 
- * @author Amit Chanddsarkar
+ * @author Amit Chandsarkar
  *
  */
 public class RoleBean extends BaseBean {
@@ -13,6 +13,8 @@ public class RoleBean extends BaseBean {
 	public static final int COLLEGE = 3;
 	public static final int KIOSK = 4;
 	public static final int FACULTY = 5;
+	
+	
 
 	private String name;
 	private String description;

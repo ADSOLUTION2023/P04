@@ -46,20 +46,17 @@ public class UserCtl extends BaseCtl {
 	 */
 	@Override
 	protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-	    log.debug("UserCtl Method preload started");
-	    RoleModel roleModel = new RoleModel();
+		log.debug("UserCtl Method preload started");
+		RoleModel roleModel = new RoleModel();
 
-	    try {
-	        List<RoleBean> roleList = roleModel.list();
-	        request.setAttribute("roleList", roleList);
-	    } catch (ApplicationException e) {
-            e.printStackTrace();
-			ServletUtility.setErrorMessage("Database server down!!!", request);
-
-            ServletUtility.handleException(e, request, response, getView());
-            return;
-        }
-	    log.debug("UserCtl Method preload ended");
+		try {
+			List roleList = roleModel.list();
+			request.setAttribute("roleList", roleList);
+		} catch (ApplicationException e) {
+			request.setAttribute("roleList", new ArrayList<>());
+			ServletUtility.handleExceptionDB(getView(), request, response);
+		}
+		log.debug("UserCtl Method preload ended");
 	}		
 
 	/**
@@ -240,6 +237,7 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Login Id already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
+				ServletUtility.setErrorMessage("Database Server Down...", request);
 				ServletUtility.handleException(e,request, response,getView());
 				return;
 			
@@ -258,6 +256,7 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Login Id already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
+				ServletUtility.setErrorMessage("Database Server Down...", request);
 				ServletUtility.handleException(e,request, response,getView());
 				return;
 			}

@@ -106,8 +106,10 @@ public interface ORSView {
 	public String FACULTY_LIST_CTL = APP_CONTEXT + "/ctl/FacultyListCtl";
 	
 	/** Account pages (USECASE) */
-	public String ACCOUNT_VIEW = PAGE_FOLDER + "/AccountView.jsp";
-	public String ACCOUNT_CTL = APP_CONTEXT + "/ctl/AccountCtl";
+	public String PATIENT_VIEW = PAGE_FOLDER + "/PatientView.jsp";
+	public String PATIENT_CTL = APP_CONTEXT + "/ctl/PatientCtl";
+	public String PATIENT_LIST_VIEW = PAGE_FOLDER + "/PatientListView.jsp";
+	public String PATIENT_LIST_CTL = APP_CONTEXT + "/ctl/PatientListCtl";
 
 	/** Error page */
 	public String ERROR_VIEW = PAGE_FOLDER + "/ErrorView.jsp";

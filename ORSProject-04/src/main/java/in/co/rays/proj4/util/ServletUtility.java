@@ -118,8 +118,8 @@ public class ServletUtility {
 		// response.sendRedirect(ORSView.ERROR_CTL);
 	}
 
-	public static void handleExceptionDB(String page, Exception e, HttpServletRequest request,
-			HttpServletResponse response, String string) throws IOException, ServletException {
+	public static void handleExceptionDB(String page, HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
 		setErrorMessage("DATABASE SERVER DOWN....!!", request);// doGet or doPost
 		forward(page, request, response);
 	}

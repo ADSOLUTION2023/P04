@@ -3,46 +3,21 @@ package in.co.rays.proj4.bean;
 import java.util.Date;
 
 public class AccountBean extends BaseBean{
-	
+	  
+		private String bankName;
 	    private String accountNo;
 	    private String name;
-	    private String accountId;
-		private String password;
 	    private double balance;
-	    private String status;
-	    private String mobileNo;
-	    private Date dob;
-		private String gender;
-	   
-		public String getAccountId() {
-			return accountId;
+	    private String accountType;
+	    private Date doo;
+	    //public static final int SAVING = 4;
+		//public static final int CURRENT = 5;
+	    
+		public String getBankName() {
+			return bankName;
 		}
-		public void setAccountId(String login) {
-			this.accountId = accountId;
-		}
-		public String getPassword() {
-			return password;
-		}
-		public void setPassword(String password) {
-			this.password = password;
-		}
-		public Date getDob() {
-			return dob;
-		}
-		public void setDob(Date dob) {
-			this.dob = dob;
-		}
-		public String getMobileNo() {
-			return mobileNo;
-		}
-		public void setMobileNo(String mobileNo) {
-			this.mobileNo = mobileNo;
-		}
-		public String getGender() {
-			return gender;
-		}
-		public void setGender(String gender) {
-			this.gender = gender;
+		public void setBankName(String bankName) {
+			this.bankName = bankName;
 		}
 		public String getAccountNo() {
 			return accountNo;
@@ -62,23 +37,27 @@ public class AccountBean extends BaseBean{
 		public void setBalance(double balance) {
 			this.balance = balance;
 		}
-		public String getStatus() {
-			return status;
+		public String getAccountType() {
+			return accountType;
 		}
-		public void setStatus(String status) {
-			this.status = status;
+		public void setAccountType(String accountType) {
+			this.accountType = accountType;
+		}
+		public Date getDoo() {
+			return doo;
+		}
+		public void setDoo(Date doo) {
+			this.doo = doo;
 		}
 		@Override
 		public String getKey() {
 			return id + "";
 		}
+
 		@Override
 		public String getValue() {
-			return name + " " + accountNo;
+			return name;
 		}
-	    
-	    
-	}
-
-
-
+}
+	   
+		

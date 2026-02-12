@@ -128,7 +128,7 @@ public class RoleCtl extends BaseCtl {
                 ServletUtility.setErrorMessage("Role Id already exists", request);
             } catch (ApplicationException e) {
 				e.printStackTrace();
-				 ServletUtility.handleException(e, request, response,getView());
+				ServletUtility.handleExceptionDB(getView(), request, response);
 				return;
             } catch (DataBaseException e) {
 				e.printStackTrace();
@@ -148,7 +148,7 @@ public class RoleCtl extends BaseCtl {
                 ServletUtility.setErrorMessage("Role already exists", request);
             } catch (ApplicationException e) {
 				e.printStackTrace();
-				 ServletUtility.handleException(e, request, response,getView());
+				ServletUtility.handleExceptionDB(getView(), request, response);
 				return;
             }
 

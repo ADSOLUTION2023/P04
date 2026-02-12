@@ -29,7 +29,7 @@
 
 
 		<%
-			List<UserBean> roleList = (List<UserBean>) request.getAttribute("roleList");
+			List roleList = (List) request.getAttribute("roleList");
 		%>
 
 		<div align="center">

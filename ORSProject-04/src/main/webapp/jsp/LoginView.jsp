@@ -52,9 +52,12 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" name="operation" value="<%=LoginCtl.OP_SIGN_IN%>"> 
+					<td>
+						<input type="submit" name="operation" value="<%=LoginCtl.OP_SIGN_IN%>"> 
+						<input type="submit" name="operation" value="<%=LoginCtl.OP_SIGN_UP%>">
+						<input type="submit" name="operation" value="<%=LoginCtl.OP_RESET%>">
+					</td>
 						
-						<input type="submit" name="operation" value="<%=LoginCtl.OP_SIGN_UP%>"></td>
 				</tr>
 				<tr>
 					<th></th>
