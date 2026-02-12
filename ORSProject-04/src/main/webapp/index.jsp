@@ -27,7 +27,7 @@
 
 	<h1 align="center">
 	<font size="10px" color="red"> 
-	<a href="<%=ORSView.WELCOME_CTL%>">MY NAME IS AMIT</a></font>
+	<a href="<%=ORSView.WELCOME_CTL%>">MY NAME IS AMIT (ORS)</a></font>
 </h1>
 </html>
 
