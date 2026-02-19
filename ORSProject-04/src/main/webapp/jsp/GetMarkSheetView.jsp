@@ -1,3 +1,4 @@
+<%@page import="in.co.rays.proj4.controller.MarkSheetListCtl"%>
 <%@page import="in.co.rays.proj4.controller.GetMarkSheetCtl"%>
 <%@page import="in.co.rays.proj4.controller.ORSView"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -202,6 +203,13 @@
                             }
                         %>
                     </th>
+                </tr>
+            </table>
+             <table>
+                <tr>
+                    <td align="right">
+                        <input type="submit" name="operation" value="<%=MarkSheetListCtl.OP_BACK%>">
+                    </td>
                 </tr>
             </table>
             <%

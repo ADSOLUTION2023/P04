@@ -1,7 +1,7 @@
 package in.co.rays.proj4.controller;
 
 import java.io.IOException;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -32,7 +32,8 @@ public class MarkSheetCtl extends BaseCtl{
 			studentList = StudentModel.list();
 			request.setAttribute("studentList", studentList);
 		} catch (ApplicationException e) {
-			e.printStackTrace();
+			request.setAttribute("roleList", new ArrayList<>());
+			ServletUtility.handleExceptionDB(getView(), request, response);
 		}
 		super.preload(request,response);
 	}
@@ -58,9 +59,9 @@ public class MarkSheetCtl extends BaseCtl{
 				ServletUtility.setSuccessMessage("Marksheet added successfully", request);
 			} catch (DuplicateRecordException e) {
 				ServletUtility.setBean(bean, request);
-				ServletUtility.setErrorMessage("Login Id already exists", request);
+				ServletUtility.setErrorMessage("MarkSheet Record already exists", request);
 			} catch (ApplicationException e) {
-				e.printStackTrace();
+				ServletUtility.handleExceptionDB(getView(), request, response);
 				return;
 			}
 		} else if (OP_RESET.equalsIgnoreCase(op)) {

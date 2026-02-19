@@ -30,7 +30,7 @@ import in.co.rays.proj4.util.ServletUtility;
  * @author Amit Chandsarkar
  * @version 1.0
  */
-@WebServlet(name = "TimetableListCtl", urlPatterns = { "/ctl/TimetableListCtl" })
+@WebServlet(name = "TimeTableListCtl", urlPatterns = { "/ctl/TimeTableListCtl" })
 public class TimeTableListCtl extends BaseCtl {
 
     /**

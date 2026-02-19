@@ -159,7 +159,7 @@ public class LoginCtl extends BaseCtl {
 
             } catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.setErrorMessage("Database Server Down...", request);
+				//ServletUtility.setErrorMessage("Database Server Down...", request);
 				ServletUtility.handleExceptionDB(getView(), request, response);
                 return;
             }

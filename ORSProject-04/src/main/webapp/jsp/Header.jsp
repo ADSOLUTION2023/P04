@@ -66,6 +66,8 @@ pageEncoding="ISO-8859-1"%>
 	<b>|</b>
 	<a href="<%=ORSView.TIMETABLE_CTL%>"><b>Add Timetable</b></a>
 	<b>|</b>
+	<a href="<%=ORSView.TIMETABLE_LIST_CTL%>"><b>Timetable List</b></a>
+	<b>|</b>
 	<a href="<%=ORSView.FACULTY_CTL%>"><b>Add Faculty</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.FACULTY_LIST_CTL%>"><b>Faculty List</b></a>
@@ -94,13 +96,11 @@ pageEncoding="ISO-8859-1"%>
 	<b>|</b>
 	<a href="<%=ORSView.GET_MARKSHEET_CTL%>"><b> Get Marksheet</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.TIMETABLE_LIST_CTL%>"><b>Timetable List</b></a>
-	<b>|</b>
 	<a href="<%=ORSView.JAVA_DOC%>" target="blank"><b>Java Doc</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>"><b>Logout</b></a>
 	<b>|</b>
-    <a href="<%=ORSView.PATIENT_CTL%>"><b>Add Patient</b></a>
+    <a href="<%=ORSView.PATIENT_CTL%>"><b>Register Patient</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.PATIENT_LIST_CTL%>"><b>Patient List</b></a>
 	<b>|</b>

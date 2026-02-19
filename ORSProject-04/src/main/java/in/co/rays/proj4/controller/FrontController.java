@@ -1,6 +1,7 @@
 package in.co.rays.proj4.controller;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -40,43 +41,40 @@ public class FrontController implements Filter {
 	 */
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
-			throws IOException, ServletException {
+	        throws IOException, ServletException {
 
-		// System.out.println("FrontController DoFilter");
+	    HttpServletRequest request = (HttpServletRequest) req;
+	    HttpServletResponse response = (HttpServletResponse) resp;
 
-		HttpServletRequest request = (HttpServletRequest) req;
-		HttpServletResponse response = (HttpServletResponse) resp;
+	    String uri = request.getRequestURI();
 
-		HttpSession session = request.getSession();
+	    // ⭐ Allow Login & Static Resources
+	    if (uri.contains("LoginCtl") || uri.contains("LoginView") || uri.contains("/css/")
+	            || uri.contains("/js/") || uri.contains("/images/")) {
+	        chain.doFilter(req, resp);
+	        return;
+	    }
 
-		String uri = request.getRequestURI();
-		request.setAttribute("uri", uri);
+	    HttpSession session = request.getSession(false);
 
-		if (session.getAttribute("user") == null) {
-			ServletUtility.setErrorMessage("Your Session has been Expired... Please Login Again", request);
-			ServletUtility.forward(ORSView.LOGIN_VIEW, request, response);
-			return;
-		} else {
-			chain.doFilter(req, resp);
-		}
+	    if (session == null || session.getAttribute("user") == null) {
+	        ServletUtility.setErrorMessage("Your Session has been Expired... Please Login Again", request);
+	        ServletUtility.forward(ORSView.LOGIN_VIEW, request, response);
+	        return;
+	    }
+
+	    chain.doFilter(req, resp);
 	}
 
-	/**
-	 * Initializes the filter.
-	 * 
-	 * @param conf FilterConfig
-	 * @throws ServletException
-	 */
 	@Override
-	public void init(FilterConfig conf) throws ServletException {
-		// No specific initialization required
+	public void init(FilterConfig filterConfig) throws ServletException {
+	
+		
 	}
 
-	/**
-	 * Cleans up resources when the filter is destroyed.
-	 */
 	@Override
 	public void destroy() {
-		System.out.println("Hello Amit sir.....");
+
+		
 	}
 }

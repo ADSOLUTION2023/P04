@@ -65,98 +65,119 @@ public class UserCtl extends BaseCtl {
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
-		log.debug("UserCtl Method validate started");
+	    log.debug("UserCtl Method validate started");
 
-		boolean pass = true;
+	    // ⭐ ORS GOLDEN RULE – validation only on SAVE / UPDATE
+	    String op = DataUtility.getString(request.getParameter("operation"));
 
-		// First Name Validation
-		if (DataValidator.isNull(request.getParameter("firstName"))) {
-			request.setAttribute("firstName", PropertyReader.getValue("error.require", "First Name"));
-			pass = false;
-		} else if (!DataValidator.isName(request.getParameter("firstName"))) {
-			request.setAttribute("firstName", "Invalid First Name");
-			pass = false;
-		}
+	    if (!OP_SAVE.equalsIgnoreCase(op) && !OP_UPDATE.equalsIgnoreCase(op)) {
+	        return true;
+	    }
 
-		// Last Name Validation
-		if (DataValidator.isNull(request.getParameter("lastName"))) {
-			request.setAttribute("lastName", PropertyReader.getValue("error.require", "Last Name"));
-			pass = false;
-		} else if (!DataValidator.isName(request.getParameter("lastName"))) {
-			request.setAttribute("lastName", "Invalid Last Name");
-			pass = false;
-		}
+	    boolean pass = true;
 
-		// Login Validation
-		if (DataValidator.isNull(request.getParameter("login"))) {
-			request.setAttribute("login", PropertyReader.getValue("error.require", "Login Id"));
-			pass = false;
-		} else if (!DataValidator.isEmail(request.getParameter("login"))) {
-			request.setAttribute("login", PropertyReader.getValue("error.email", "Login"));
-			pass = false;
-		}
+	    // First Name
+	    if (DataValidator.isNull(request.getParameter("firstName"))) {
+	        request.setAttribute("firstName",
+	                PropertyReader.getValue("error.require", "First Name"));
+	        pass = false;
+	    } else if (!DataValidator.isName(request.getParameter("firstName"))) {
+	        request.setAttribute("firstName", "Invalid First Name");
+	        pass = false;
+	    }
 
-		// Password Validation
-		if (DataValidator.isNull(request.getParameter("password"))) {
-			request.setAttribute("password", PropertyReader.getValue("error.require", "Password"));
-			pass = false;
-		} else if (!DataValidator.isPasswordLength(request.getParameter("password"))) {
-			request.setAttribute("password", "Password should be 8 to 12 characters");
-			pass = false;
-		} else if (!DataValidator.isPassword(request.getParameter("password"))) {
-			request.setAttribute("password", "Must contain uppercase, lowercase, digit & special character");
-			pass = false;
-		}
+	    // Last Name
+	    if (DataValidator.isNull(request.getParameter("lastName"))) {
+	        request.setAttribute("lastName",
+	                PropertyReader.getValue("error.require", "Last Name"));
+	        pass = false;
+	    } else if (!DataValidator.isName(request.getParameter("lastName"))) {
+	        request.setAttribute("lastName", "Invalid Last Name");
+	        pass = false;
+	    }
 
-		// Confirm Password Validation
-		if (DataValidator.isNull(request.getParameter("confirmPassword"))) {
-			request.setAttribute("confirmPassword", PropertyReader.getValue("error.require", "Confirm Password"));
-			pass = false;
-		}
+	    // Login
+	    if (DataValidator.isNull(request.getParameter("login"))) {
+	        request.setAttribute("login",
+	                PropertyReader.getValue("error.require", "Login Id"));
+	        pass = false;
+	    } else if (!DataValidator.isEmail(request.getParameter("login"))) {
+	        request.setAttribute("login",
+	                PropertyReader.getValue("error.email", "Login"));
+	        pass = false;
+	    }
 
-		// Password Match Check
-		if (!request.getParameter("password").equals(request.getParameter("confirmPassword"))
-				&& !"".equals(request.getParameter("confirmPassword"))) {
-			request.setAttribute("confirmPassword", "Password and Confirm Password must be same!");
-			pass = false;
-		}
+	    // Password
+	    if (DataValidator.isNull(request.getParameter("password"))) {
+	        request.setAttribute("password",
+	                PropertyReader.getValue("error.require", "Password"));
+	        pass = false;
+	    } else if (!DataValidator.isPasswordLength(request.getParameter("password"))) {
+	        request.setAttribute("password", "Password should be 8 to 12 characters");
+	        pass = false;
+	    } else if (!DataValidator.isPassword(request.getParameter("password"))) {
+	        request.setAttribute("password",
+	                "Must contain uppercase, lowercase, digit & special character");
+	        pass = false;
+	    }
 
-		// Gender Validation
-		if (DataValidator.isNull(request.getParameter("gender"))) {
-			request.setAttribute("gender", PropertyReader.getValue("error.require", "Gender"));
-			pass = false;
-		}
+	    // Confirm Password
+	    if (DataValidator.isNull(request.getParameter("confirmPassword"))) {
+	        request.setAttribute("confirmPassword",
+	                PropertyReader.getValue("error.require", "Confirm Password"));
+	        pass = false;
+	    }
 
-		// Date of Birth Validation
-		if (DataValidator.isNull(request.getParameter("dob"))) {
-			request.setAttribute("dob", PropertyReader.getValue("error.require", "Date of Birth"));
-			pass = false;
-		} else if (!DataValidator.isDate(request.getParameter("dob"))) {
-			request.setAttribute("dob", PropertyReader.getValue("error.date", "Date of Birth"));
-			pass = false;
-		}
+	    // ⭐ SAFE Password Match Check (NO NULL ERROR EVER)
+	    String password = DataUtility.getString(request.getParameter("password"));
+	    String confirmPassword = DataUtility.getString(request.getParameter("confirmPassword"));
 
-		// Role Validation
-		if (DataValidator.isNull(request.getParameter("roleId"))) {
-			request.setAttribute("roleId", PropertyReader.getValue("error.require", "Role"));
-			pass = false;
-		}
+	    if (!password.equals(confirmPassword) && confirmPassword.length() > 0) {
+	        request.setAttribute("confirmPassword",
+	                "Password and Confirm Password must be same!");
+	        pass = false;
+	    }
 
-		// Mobile Number Validation
-		if (DataValidator.isNull(request.getParameter("mobileNo"))) {
-			request.setAttribute("mobileNo", PropertyReader.getValue("error.require", "Mobile No"));
-			pass = false;
-		} else if (!DataValidator.isPhoneLength(request.getParameter("mobileNo"))) {
-			request.setAttribute("mobileNo", "Mobile No must have 10 digits");
-			pass = false;
-		} else if (!DataValidator.isPhoneNo(request.getParameter("mobileNo"))) {
-			request.setAttribute("mobileNo", "Invalid Mobile No");
-			pass = false;
-		}
+	    // Gender
+	    if (DataValidator.isNull(request.getParameter("gender"))) {
+	        request.setAttribute("gender",
+	                PropertyReader.getValue("error.require", "Gender"));
+	        pass = false;
+	    }
 
-		log.debug("UserCtl Method validate ended");
-		return pass;
+	    // DOB
+	    if (DataValidator.isNull(request.getParameter("dob"))) {
+	        request.setAttribute("dob",
+	                PropertyReader.getValue("error.require", "Date of Birth"));
+	        pass = false;
+	    } else if (!DataValidator.isDate(request.getParameter("dob"))) {
+	        request.setAttribute("dob",
+	                PropertyReader.getValue("error.date", "Date of Birth"));
+	        pass = false;
+	    }
 
+	    // Role
+	    if (DataValidator.isNull(request.getParameter("roleId"))) {
+	        request.setAttribute("roleId",
+	                PropertyReader.getValue("error.require", "Role"));
+	        pass = false;
+	    }
+
+	    // Mobile No
+	    if (DataValidator.isNull(request.getParameter("mobileNo"))) {
+	        request.setAttribute("mobileNo",
+	                PropertyReader.getValue("error.require", "Mobile No"));
+	        pass = false;
+	    } else if (!DataValidator.isPhoneLength(request.getParameter("mobileNo"))) {
+	        request.setAttribute("mobileNo", "Mobile No must have 10 digits");
+	        pass = false;
+	    } else if (!DataValidator.isPhoneNo(request.getParameter("mobileNo"))) {
+	        request.setAttribute("mobileNo", "Invalid Mobile No");
+	        pass = false;
+	    }
+
+	    log.debug("UserCtl Method validate ended");
+	    return pass;
 	}
 
 	/**
@@ -203,8 +224,7 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.setErrorMessage("Database Server Down...", request);
-				ServletUtility.handleException(e,request, response,getView());
+				ServletUtility.handleExceptionDB(getView(), request, response);
 				return;
 				
 			}
@@ -237,8 +257,7 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Login Id already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.setErrorMessage("Database Server Down...", request);
-				ServletUtility.handleException(e,request, response,getView());
+				ServletUtility.handleExceptionDB(getView(), request, response);
 				return;
 			
 			}

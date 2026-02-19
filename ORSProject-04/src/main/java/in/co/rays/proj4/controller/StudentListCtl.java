@@ -39,6 +39,10 @@ public class StudentListCtl extends BaseCtl {
         bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
         bean.setLastName(DataUtility.getString(request.getParameter("lastName")));
         bean.setEmail(DataUtility.getString(request.getParameter("email")));
+        bean.setDob(DataUtility.getDate(request.getParameter("dob")));
+        bean.setMobileNo(DataUtility.getString(request.getParameter("mobileNo")));
+        bean.setCollegeId(DataUtility.getLong(request.getParameter("collegeId")));
+        bean.setCollegeName(DataUtility.getString(request.getParameter("collegeName")));
 
         return bean;
     }
@@ -71,7 +75,7 @@ public class StudentListCtl extends BaseCtl {
 
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response,getView());
+            ServletUtility.handleExceptionDB(getView(), request, response);
         }
     }
 
@@ -148,7 +152,7 @@ public class StudentListCtl extends BaseCtl {
             ServletUtility.forward(getView(), request, response);
         } catch (ApplicationException e) {
             e.printStackTrace();
-            ServletUtility.handleException(e, request, response,getView());
+            ServletUtility.handleExceptionDB(getView(), request, response);
         }
     }
 

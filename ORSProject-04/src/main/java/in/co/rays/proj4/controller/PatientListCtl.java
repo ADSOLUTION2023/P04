@@ -11,74 +11,45 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import in.co.rays.proj4.bean.BaseBean;
-import in.co.rays.proj4.bean.UserBean;
+import in.co.rays.proj4.bean.PatientBean;
 import in.co.rays.proj4.exception.ApplicationException;
-import in.co.rays.proj4.model.RoleModel;
-import in.co.rays.proj4.model.UserModel;
+import in.co.rays.proj4.model.PatientModel;
 import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
-
-/**
- * Controller class to handle User list operations such as search, pagination,
- * and deletion.
- * 
- * Displays list of users and processes list-related actions.
- * 
- * @author Amit Chandsarkar
- */
-@WebServlet(name = "UserListCtl", urlPatterns = { "/ctl/UserListCtl" })
-public class UserListCtl extends BaseCtl {
+@WebServlet(name = "PatientListCtl", urlPatterns = { "/ctl/PatientListCtl" })
+public class PatientListCtl extends BaseCtl{
 	
 	private static Logger log = Logger.getLogger(UserListCtl.class);
 
-    /**
-     * Loads preload lists such as Role list to populate dropdown filters.
+	 /**
+     * Populates a PatientBean with request parameters for search filters.
      *
      * @param request the HttpServletRequest
-     */
-    @Override
-    protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-    	
-    	log.debug("UserListCtl Method preload started");
-    	
-        RoleModel rolemodel = new RoleModel();
-
-        try {
-            List roleList = rolemodel.list();
-            request.setAttribute("roleList", roleList);
-        } catch (ApplicationException e) {
-           e.printStackTrace();
-        	ServletUtility.handleExceptionDB(getView(),request, response);
-        }
-
-        log.debug("UserListCtl Method preload ended");
-    }
-
-    /**
-     * Populates a UserBean with request parameters for search filters.
-     *
-     * @param request the HttpServletRequest
-     * @return populated UserBean
+     * @return populated PatientBean
      */
     @Override
     protected BaseBean populateBean(HttpServletRequest request) {
     	
-    	log.debug("UserListCtl Method populate started");
+    	log.debug("PatientListCtl Method populate started");
 
-        UserBean bean = new UserBean();
+        PatientBean bean = new PatientBean();
 
-        bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
-        bean.setLogin(DataUtility.getString(request.getParameter("login")));
-        bean.setRoleId(DataUtility.getLong(request.getParameter("roleId")));
-        bean.setDob(DataUtility.getDate(request.getParameter("dob")));
-
-        log.debug("UserListCtl Method populate ended");
-        return bean;
+	    bean.setId(DataUtility.getLong(request.getParameter("id")));
+	    bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
+	    bean.setLastName(DataUtility.getString(request.getParameter("lastName")));
+	    bean.setDob(DataUtility.getDate(request.getParameter("dob")));
+	    bean.setGender(DataUtility.getString(request.getParameter("gender")));
+	    bean.setMobileNo(DataUtility.getString(request.getParameter("mobileNo")));
+	    bean.setEmail(DataUtility.getString(request.getParameter("email")));
+	    bean.setAddress(DataUtility.getString(request.getParameter("address")));
+	    
+	    log.debug("PatientListCtl Method populate ended");
+	    return bean;
     }
 
     /**
-     * Handles GET request to display the initial User list with pagination.
+     * Handles GET request to display the initial Patient list with pagination.
      *
      * @param request the HttpServletRequest
      * @param response the HttpServletResponse
@@ -87,17 +58,17 @@ public class UserListCtl extends BaseCtl {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
-    	log.debug("UserListCtl Method doGet started");
+    	log.debug("PatientListCtl Method doGet started");
 
         int pageNo = 1;
         int pageSize = DataUtility.getInt(PropertyReader.getValue("page.size"));
 
-        UserBean bean = (UserBean) populateBean(request);
-        UserModel model = new UserModel();
+        PatientBean bean = (PatientBean) populateBean(request);
+        PatientModel model = new PatientModel();
 
         try {
-            List<UserBean> list = model.search(bean, pageNo, pageSize);
-            List<UserBean> next = model.search(bean, pageNo + 1, pageSize);
+            List<PatientBean> list = model.search(bean, pageNo, pageSize);
+            List<PatientBean> next = model.search(bean, pageNo + 1, pageSize);
 
             if (list == null || list.isEmpty()) {
                 ServletUtility.setErrorMessage("no record found", request);
@@ -112,13 +83,10 @@ public class UserListCtl extends BaseCtl {
             ServletUtility.forward(getView(), request, response);
 
         } catch (ApplicationException e) {
-			e.printStackTrace();
-			ServletUtility.handleExceptionDB(getView(), request, response);
-			return;
-			
-		}
-	
-        log.debug("UserListCtl Method doGet ended");
+            e.printStackTrace();
+            return;
+        }
+        log.debug("PatientListCtl Method doGet ended");
     }
 
     /**
@@ -132,7 +100,7 @@ public class UserListCtl extends BaseCtl {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
-    	log.debug("UserListCtl Method doPost started");
+    	log.debug("PatientListCtl Method doPost started");
 
         List list = null;
         List next = null;
@@ -143,8 +111,8 @@ public class UserListCtl extends BaseCtl {
         pageNo = (pageNo == 0) ? 1 : pageNo;
         pageSize = (pageSize == 0) ? DataUtility.getInt(PropertyReader.getValue("page.size")) : pageSize;
 
-        UserBean bean = (UserBean) populateBean(request);
-        UserModel model = new UserModel();
+        PatientBean bean = (PatientBean) populateBean(request);
+        PatientModel model = new PatientModel();
 
         String op = DataUtility.getString(request.getParameter("operation"));
         String[] ids = request.getParameterValues("ids");
@@ -162,28 +130,28 @@ public class UserListCtl extends BaseCtl {
                 }
 
             } else if (OP_NEW.equalsIgnoreCase(op)) {
-                ServletUtility.redirect(ORSView.USER_CTL, request, response);
+                ServletUtility.redirect(ORSView.PATIENT_CTL, request, response);
                 return;
 
             } else if (OP_DELETE.equalsIgnoreCase(op)) {
                 pageNo = 1;
                 if (ids != null && ids.length > 0) {
-                    UserBean deletebean = new UserBean();
+                    PatientBean deletebean = new PatientBean();
                     for (String id : ids) {
                         deletebean.setId(DataUtility.getInt(id));
                         model.delete(deletebean);
-                        ServletUtility.setSuccessMessage("User deleted successfully", request);
+                        ServletUtility.setSuccessMessage("Patient deleted successfully", request);
                     }
                 } else {
                     ServletUtility.setErrorMessage("Select at least one record", request);
                 }
 
             } else if (OP_RESET.equalsIgnoreCase(op)) {
-                ServletUtility.redirect(ORSView.USER_LIST_CTL, request, response);
+                ServletUtility.redirect(ORSView.PATIENT_LIST_CTL, request, response);
                 return;
 
             } else if (OP_BACK.equalsIgnoreCase(op)) {
-                ServletUtility.redirect(ORSView.USER_LIST_CTL, request, response);
+                ServletUtility.redirect(ORSView.PATIENT_LIST_CTL, request, response);
                 return;
             }
 
@@ -203,21 +171,21 @@ public class UserListCtl extends BaseCtl {
             ServletUtility.forward(getView(), request, response);
 
         } catch (ApplicationException e) {
-			e.printStackTrace();
-			ServletUtility.handleExceptionDB(getView(), request, response);
-			return;
-			
-		}
-        log.debug("UserListCtl Method doPost ended");
+            e.printStackTrace();
+            return;
+        }
+        
+        log.debug("PatientListCtl Method doPost ended");
     }
 
     /**
-     * Returns the view for User List screen.
+     * Returns the view for Patient List screen.
      *
-     * @return USER_LIST_VIEW constant
+     * @return Patient_LIST_VIEW constant
      */
     @Override
     protected String getView() {
-        return ORSView.USER_LIST_VIEW;
+        return ORSView.PATIENT_LIST_VIEW;
     }
+
 }
