@@ -22,7 +22,7 @@
 			scope="request"></jsp:useBean>
 
 		<div align="center">
-			<h1>Login</h1>
+			<h1align="center" style="margin-bottom: -15; color: navy">Login</h1>
 			<h2 style="color: green"><%=ServletUtility.getSuccessMessage(request)%></h2>
 			<h4 style="color: red"><%=ServletUtility.getErrorMessage(request)%></h2>
 			
