@@ -88,13 +88,13 @@ pageEncoding="ISO-8859-1"%>
 	<b>|</b>
 	<a href="<%=ORSView.STUDENT_LIST_CTL%>"><b>Student List</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.MARKSHEET_CTL%>"><b>Add Marksheet</b></a>
+	<a href="<%=ORSView.MARKSHEET_CTL%>"><b>Add MarkSheet</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.MARKSHEET_LIST_CTL%>"><b>Marksheet List</b></a>
+	<a href="<%=ORSView.MARKSHEET_LIST_CTL%>"><b>MarkSheet List</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>Marksheet Merit List</b></a>
+	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>MarkSheet Merit List</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.GET_MARKSHEET_CTL%>"><b> Get Marksheet</b></a>
+	<a href="<%=ORSView.GET_MARKSHEET_CTL%>"><b> Get MarkSheet</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.JAVA_DOC%>" target="blank"><b>Java Doc</b></a>
 	<b>|</b>

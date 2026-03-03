@@ -98,8 +98,7 @@
 
 				<tr>
 					<th align="left">Mobile No<span style="color: red">*</span></th>
-					<td><input type="text" name="mobileNo"
-						placeholder="Enter Mobile Number"
+					<td><input type="text" name="mobileNo" placeholder="Enter Mobile Number"
 						value="<%=DataUtility.getStringData(bean.getMobileNo())%>">
 					</td>
 					<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("mobileNo", request)%></font>
@@ -116,8 +115,7 @@
 
 				<tr>
 					<th align="left">Address<span style="color: red">*</span></th>
-					<td><input type="text" name="address"
-						placeholder="Enter Address"
+					<td><input type="text" name="address" placeholder="Enter Address"
 						value="<%=DataUtility.getStringData(bean.getAddress())%>">
 					</td>
 					<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("address", request)%></font>
@@ -128,7 +126,9 @@
 				<tr>
 					<td></td>
 					<td><input type="submit" name="operation" value="Save">
-						<input type="submit" name="operation" value="Cancel"></td>
+						<input type="submit" name="operation" value="Cancel">
+						<input type="submit" name="operation" value="Update">
+						</td>
 				</tr>
 
 			</table>

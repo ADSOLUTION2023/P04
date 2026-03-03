@@ -1,4 +1,5 @@
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="in.co.rays.proj4.controller.UserCtl"%>
 <%@page import="java.util.HashMap"%>
@@ -26,10 +27,18 @@
 		<%-- 	<%
 		HashMap<String, String> map = (HashMap<String, String>) request.getAttribute("map");
 		%> --%>
-
+		<%
+			if (bean == null) {
+				bean = new in.co.rays.proj4.bean.UserBean();
+			}
+		%>
 
 		<%
 			List roleList = (List) request.getAttribute("roleList");
+
+			if (roleList == null) {
+				roleList = new ArrayList();
+			}
 		%>
 
 		<div align="center">
@@ -87,12 +96,8 @@
 						value="<%=DataUtility.getStringData(bean.getLogin())%>"></td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("login", request)%></font></td>
 				</tr>
-				<%
-					if (bean != null && bean.getId() > 0) {
-				%>
-				<%
-					} else {
-				%><tr>
+				
+				<tr>
 					<th align="left">Password<span style="color: red">*</span></th>
 					<td><input type="password" name="password"
 						placeholder="Enter Password"
@@ -106,10 +111,6 @@
 						value="<%=DataUtility.getStringData(bean.getPassword())%>"></td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("confirmPassword", request)%></font></td>
 				</tr>
-				<%
-					}
-				%>
-
 				<tr>
 					<th align="left">Date of Birth<span style="width: 98%"
 						style="color: red">*</span></th>
@@ -134,7 +135,14 @@
 				</tr>
 
 				<th align="left">Role<span style="color: red">*</span></th>
-				<td><%=HTMLUtility.getList("roleId", String.valueOf(bean.getRoleId()), roleList)%></td>
+				<%
+					String roleId = "0";
+					if (bean != null) {
+						roleId = String.valueOf(bean.getRoleId());
+					}
+				%>
+
+				<td><%=HTMLUtility.getList("roleId", roleId, roleList)%></td>
 				<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("roleId", request)%></font></td>
 				</tr>
 				<tr>

@@ -20,7 +20,7 @@ import in.co.rays.proj4.util.ServletUtility;
 @WebServlet(name = "PatientListCtl", urlPatterns = { "/ctl/PatientListCtl" })
 public class PatientListCtl extends BaseCtl{
 	
-	private static Logger log = Logger.getLogger(UserListCtl.class);
+	private static Logger log = Logger.getLogger(PatientListCtl.class);
 
 	 /**
      * Populates a PatientBean with request parameters for search filters.

@@ -54,8 +54,9 @@ public class HTMLUtility {
 
 		List<DropdownListBean> dd = (List<DropdownListBean>) list;
 
-		// StringBuffer sb = new StringBuffer( "<select style='width: 163px; height:
-		// 23px;' class='form-control' name='" + name + "'>");
+		StringBuffer sb1 = new StringBuffer(
+			    "<select style='width:163px; height:23px;' class='form-control' name='" 
+			    + name + "'>");
 
 		String key = null;
 		String val = null;
@@ -65,14 +66,14 @@ public class HTMLUtility {
 			val = obj.getValue();
 
 			if (key.trim().equals(selectedVal)) {
-				sb.append("<option selected value='" + key + "'>" + val + "</option>");
+				sb1.append("<option selected value='" + key + "'>" + val + "</option>");
 			} else {
-				sb.append("<option value='" + key + "'>" + val + "</option>");
+				sb1.append("<option value='" + key + "'>" + val + "</option>");
 			}
 		}
-		sb.append("</select>");
-		System.out.println("get list 2=========" + sb.toString());
-		return sb.toString();
+		sb1.append("</select>");
+		System.out.println("get list 2=========" + sb1.toString());
+		return sb1.toString();
 	}
 
 	public static void testGetListByMap() {

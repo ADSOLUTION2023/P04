@@ -123,9 +123,10 @@ protected BaseBean populateBean(HttpServletRequest request) {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("SAVE BUTTON HIT");
+		
 
 		String op = DataUtility.getString(request.getParameter("operation"));
+		System.out.println("SAVE BUTTON HIT");
 		PatientModel model = new PatientModel();
 		long id = DataUtility.getLong(request.getParameter("id"));
 
@@ -137,9 +138,9 @@ protected BaseBean populateBean(HttpServletRequest request) {
 				ServletUtility.setSuccessMessage("Patient added successfully", request);
 			} catch (DuplicateRecordException e) {
 				ServletUtility.setBean(bean, request);
-				ServletUtility.setErrorMessage("Patient with Id already exists", request);
+				ServletUtility.setErrorMessage("Patient with Id is already exist", request);
 			} catch (ApplicationException e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 				ServletUtility.handleExceptionDB(getView(), request, response);
 				return;
 

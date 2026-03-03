@@ -102,7 +102,7 @@ public class PatientModel {
 		PatientBean bean = null;
 		Connection conn = null;
 
-		StringBuffer sql = new StringBuffer("select * from patient where mobileNo = ?");
+		StringBuffer sql = new StringBuffer("select * from patient where mobile_no= ?");
 
 		try {
 			conn = JDBCDataSource.getConnection();
@@ -138,7 +138,7 @@ public class PatientModel {
 	 * @param bean the PatientBean containing updated patient details
 	 * @throws DuplicateRecordException if the Patient with Id already exists for
 	 *                                  another patient
-	 * @throws ApplicationException     if an application-level exception occurs
+	 * @throws ApplicationException if an application-level exception occurs
 	 */
 	public void update(PatientBean bean) throws DuplicateRecordException, ApplicationException {
 
@@ -146,7 +146,7 @@ public class PatientModel {
 
 		PatientBean beanExist = findByPk(bean.getId());
 
-		if (beanExist != null && (beanExist.getId() != bean.getId())) {
+		if (beanExist != null && (beanExist.getId()!= bean.getId())) {
 			throw new DuplicateRecordException("Patient with Id is already exist");
 		}
 

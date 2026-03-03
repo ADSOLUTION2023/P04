@@ -32,7 +32,7 @@ public class MarkSheetCtl extends BaseCtl{
 			studentList = StudentModel.list();
 			request.setAttribute("studentList", studentList);
 		} catch (ApplicationException e) {
-			request.setAttribute("roleList", new ArrayList<>());
+			request.setAttribute("studentList", new ArrayList<>());;
 			ServletUtility.handleExceptionDB(getView(), request, response);
 		}
 		super.preload(request,response);
@@ -48,6 +48,8 @@ public class MarkSheetCtl extends BaseCtl{
 			throws ServletException, IOException {
 
 		String op = DataUtility.getString(request.getParameter("operation"));
+		System.out.println("Operation = " + op);
+		System.out.println("StudentId = " + request.getParameter("studentId"));
 
 		MarkSheetModel model = new MarkSheetModel();
 
