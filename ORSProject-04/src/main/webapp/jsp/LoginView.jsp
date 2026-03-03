@@ -21,12 +21,7 @@
 		<jsp:useBean id="bean" class="in.co.rays.proj4.bean.UserBean"
 			scope="request"></jsp:useBean>
 		<div align="center">
-<<<<<<< HEAD
 			<h1 align="center" style="margin-bottom: -15; color: navy;">Login</h1>
-
-=======
-			<h1align="center" style="margin-bottom: -15; color: navy">Login</h1>
->>>>>>> ae965346dff8a1b3ca03aaa86d8a5e481e857fd2
 			<h2 style="color: green"><%=ServletUtility.getSuccessMessage(request)%></h2>
 			<h4 style="color: red"><%=ServletUtility.getErrorMessage(request)%></h2>
 
