@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/antlr-2.7.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/asm.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/asm-attrs.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/cglib-2.1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/commons-collections-2.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/commons-logging-1.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/ehcache-1.2.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/hamcrest-all-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/hibernate3.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/hibernate-core-5.6.15.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/jaas.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/jta.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/junit-4.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/log4j-1.2.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/log4j-1.2.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/mchange-commons-java-0.2.3.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AMIT/OneDrive/Desktop/RAYS/Hibernate Jars/mysql-connector-java-8.0.29 (1).jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

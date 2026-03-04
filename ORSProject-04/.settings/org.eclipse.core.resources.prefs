@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/main/java/in/co/rays/proj4/controller/FrontController.java=UTF-8
+encoding//src/main/java/in/co/rays/proj4/controller/HospitalCtl.java=UTF-8
+encoding//src/main/java/in/co/rays/proj4/controller/PatientCtl.java=UTF-8
+encoding//src/main/java/in/co/rays/proj4/controller/UserCtl.java=UTF-8
+encoding//src/main/java/in/co/rays/proj4/model/PatientModel.java=UTF-8
+encoding//src/main/webapp/jsp/UserRegistrationView.jsp=UTF-8
+encoding//src/main/webapp/jsp/UserView.jsp=UTF-8
