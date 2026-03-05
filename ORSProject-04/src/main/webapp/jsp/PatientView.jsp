@@ -1,3 +1,4 @@
+<%@page import="in.co.rays.proj4.controller.PatientCtl"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="in.co.rays.proj4.util.HTMLUtility"%>
 <%@page import="in.co.rays.proj4.controller.ORSView"%>
@@ -27,7 +28,7 @@
 					if (bean != null && bean.getId() > 0) {
 				%>Update<%
 					} else {
-				%>Register<%
+				%>Add<%
 					}
 				%>
 				Patient
@@ -98,10 +99,11 @@
 
 				<tr>
 					<th align="left">Mobile No<span style="color: red">*</span></th>
-					<td><input type="text" name="mobileNo" placeholder="Enter Mobile Number"
+					<td><input type="text" name="mobileNo"
+						placeholder="Enter Mobile Number"
 						value="<%=DataUtility.getStringData(bean.getMobileNo())%>">
 					</td>
-					<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("mobileNo", request)%></font>
+					<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("mobile_no", request)%></font>
 					</td>
 				</tr>
 
@@ -115,7 +117,8 @@
 
 				<tr>
 					<th align="left">Address<span style="color: red">*</span></th>
-					<td><input type="text" name="address" placeholder="Enter Address"
+					<td><input type="text" name="address"
+						placeholder="Enter Address"
 						value="<%=DataUtility.getStringData(bean.getAddress())%>">
 					</td>
 					<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("address", request)%></font>
@@ -124,11 +127,22 @@
 
 
 				<tr>
-					<td></td>
-					<td><input type="submit" name="operation" value="Save">
-						<input type="submit" name="operation" value="Cancel">
-						<input type="submit" name="operation" value="Update">
-						</td>
+					<th></th>
+					<%
+						if (bean != null && bean.getId() > 0) {
+					%>
+					<td align="left" colspan="2"><input type="submit"
+						name="operation" value="<%=PatientCtl.OP_UPDATE%>"> <input
+						type="submit" name="operation" value="<%=PatientCtl.OP_CANCEL%>">
+						<%
+							} else {
+						%>
+					<td align="left" colspan="2"><input type="submit"
+						name="operation" value="<%=PatientCtl.OP_SAVE%>"> <input
+						type="submit" name="operation" value="<%=PatientCtl.OP_RESET%>">
+						<%
+							}
+						%>
 				</tr>
 
 			</table>

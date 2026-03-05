@@ -53,8 +53,8 @@ public class LoginCtl extends BaseCtl {
             return pass;
         }
 
-        if (DataValidator.isNull(request.getParameter("login"))) {
-            request.setAttribute("login", PropertyReader.getValue("error.require", "Login Id"));
+        if (DataValidator.isNull(request.getParameter("loginId"))) {
+            request.setAttribute("loginId", PropertyReader.getValue("error.require", "Login Id"));
             pass = false;
         } else if (!DataValidator.isEmail(request.getParameter("login"))) {
             request.setAttribute("login", PropertyReader.getValue("error.email", "Login "));

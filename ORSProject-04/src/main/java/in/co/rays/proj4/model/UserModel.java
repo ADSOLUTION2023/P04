@@ -474,14 +474,13 @@ public class UserModel {
 	 * @throws ApplicationException    if an application-level exception occurs
 	 */
 	public boolean forgetPassword(String login) throws RecordNotFoundException, ApplicationException {
-
+		
 		UserBean userData = findByLogin(login);
-		boolean flag = false;
 
 		if (userData == null) {
 			throw new RecordNotFoundException("Email ID does not exists..!!");
 		}
-
+		boolean flag = false;
 		try {
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put("login", userData.getLogin());

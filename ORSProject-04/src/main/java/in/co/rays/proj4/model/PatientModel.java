@@ -70,7 +70,7 @@ public class PatientModel {
 			conn.setAutoCommit(false);
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO patient VALUES(?,?,?,?,?,?,?,?)");
 
-			ps.setLong(1, nextPk());
+			ps.setLong(1, pk);
 			ps.setString(2, bean.getFirstName());
 			ps.setString(3, bean.getLastName());
 			ps.setDate(4, new java.sql.Date(bean.getDob().getTime()));
@@ -102,7 +102,7 @@ public class PatientModel {
 		PatientBean bean = null;
 		Connection conn = null;
 
-		StringBuffer sql = new StringBuffer("select * from patient where mobile_no= ?");
+		StringBuffer sql = new StringBuffer("select * from patient where mobile_no = ?");
 
 		try {
 			conn = JDBCDataSource.getConnection();
@@ -124,7 +124,7 @@ public class PatientModel {
 			ps.close();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DuplicateRecordException("Exception : Exception in getting patient by mobileNo");
+			throw new DuplicateRecordException("Exception : Exception in getting patient by mobile_no");
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}
@@ -138,7 +138,7 @@ public class PatientModel {
 	 * @param bean the PatientBean containing updated patient details
 	 * @throws DuplicateRecordException if the Patient with Id already exists for
 	 *                                  another patient
-	 * @throws ApplicationException if an application-level exception occurs
+	 * @throws ApplicationException     if an application-level exception occurs
 	 */
 	public void update(PatientBean bean) throws DuplicateRecordException, ApplicationException {
 
@@ -146,7 +146,7 @@ public class PatientModel {
 
 		PatientBean beanExist = findByPk(bean.getId());
 
-		if (beanExist != null && (beanExist.getId()!= bean.getId())) {
+		if (beanExist != null && (beanExist.getId() != bean.getId())) {
 			throw new DuplicateRecordException("Patient with Id is already exist");
 		}
 

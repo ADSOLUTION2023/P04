@@ -7,7 +7,7 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="in.co.rays.proj4.controller.ORSView"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +23,8 @@ pageEncoding="ISO-8859-1"%>
 		scope="request"></jsp:useBean>
 
 	<div align="center">
-		<h1 align="center" style="margin-bottom: -15; color: navy;">Patient List</h1>
+		<h1 align="center" style="margin-bottom: -15; color: navy;">Patient
+			List</h1>
 
 		<div style="height: 15px; margin-bottom: 12px">
 			<h3>
@@ -50,22 +51,23 @@ pageEncoding="ISO-8859-1"%>
 				if (list.size() != 0) {
 			%>
 
-			<input type="hidden" name="pageNo" value="<%=pageNo%>"> 
-			<input type="hidden" name="pageSize" value="<%=pageSize%>">
+			<input type="hidden" name="pageNo" value="<%=pageNo%>"> <input
+				type="hidden" name="pageSize" value="<%=pageSize%>">
 
 			<table style="width: 100%">
 				<tr>
-					<td align="center">
-					<label><b>First Name :</b></label> 
-					<input type="text" name="firstName" placeholder="Enter First Name"
+					<td align="center"><label><b>First Name :</b></label> <input
+						type="text" name="firstName" placeholder="Enter First Name"
 						value="<%=ServletUtility.getParameter("firstName", request)%>">&emsp;
 
-						<label><b>Email :</b></label> 
-						<input type="text" name="email" placeholder="Enter Email"
+						<label><b>Email :</b></label> <input type="text" name="email"
+						placeholder="Enter Email"
 						value="<%=ServletUtility.getParameter("email", request)%>">&emsp;
 
-						<input type="submit" name="operation" value="<%=PatientListCtl.OP_SEARCH%>"> 
-						<input type="submit" name="operation" value="<%=PatientListCtl.OP_RESET%>"></td>
+						<input type="submit" name="operation"
+						value="<%=PatientListCtl.OP_SEARCH%>"> <input
+						type="submit" name="operation"
+						value="<%=PatientListCtl.OP_RESET%>"></td>
 				</tr>
 			</table>
 
@@ -87,12 +89,14 @@ pageEncoding="ISO-8859-1"%>
 				<%
 					while (it.hasNext()) {
 							bean = it.next();
+
 							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 							String date = sdf.format(bean.getDob());
 				%>
 
 				<tr>
-					<td align="center"><input type="checkbox" class="case" name="ids" value="<%=bean.getId()%>"></td>
+					<td align="center"><input type="checkbox" class="case"
+						name="ids" value="<%=bean.getId()%>"></td>
 
 					<td align="center"><%=index++%></td>
 					<td align="center"><%=bean.getFirstName()%></td>
@@ -135,7 +139,8 @@ pageEncoding="ISO-8859-1"%>
 
 			<table>
 				<tr>
-					<td align="right"><input type="submit" name="operation" value="<%=PatientListCtl.OP_BACK%>"></td>
+					<td align="right"><input type="submit" name="operation"
+						value="<%=PatientListCtl.OP_BACK%>"></td>
 				</tr>
 			</table>
 
@@ -145,6 +150,5 @@ pageEncoding="ISO-8859-1"%>
 
 		</form>
 	</div>
-	   <%@ include file="Footer.jsp"%>
 </body>
 </html>

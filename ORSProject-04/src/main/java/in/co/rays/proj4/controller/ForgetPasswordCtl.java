@@ -106,6 +106,7 @@ public class ForgetPasswordCtl extends BaseCtl {
                     ServletUtility.setSuccessMessage("Password has been sent to your email id", request);
                 }
             } catch (RecordNotFoundException e) {
+            	e.printStackTrace();
             	ServletUtility.setErrorMessage("Email ID does not exists..!!", request);
                 //ServletUtility.setErrorMessage(e.getMessage(), request);
             } catch (ApplicationException e) {

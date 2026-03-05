@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title > <font color="red">User Registration</title>
+<title><font color="red">User Registration</title>
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
@@ -21,7 +21,8 @@
 			scope="request"></jsp:useBean>
 
 		<div align="center">
-		<h1 align="center" style="margin-bottom: -15; color: navy">User Registration</h1>
+			<h1 align="center" style="margin-bottom: -15; color: navy">User
+				Registration</h1>
 
 			<div style="height: 15px; margin-bottom: 12px">
 				<H3 align="center">
@@ -44,40 +45,71 @@
 			<table>
 				<tr>
 					<th>First Name:<span style="color: red">*</th>
-					<td><input type="text" name="firstName" placeHolder = "Enter Name"
+					<td><input type="text" name="firstName"
+						placeHolder="Enter Name"
 						value="<%=DataUtility.getStringData(bean.getFirstName())%>"></td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("firstName", request)%></font></td>
 				</tr>
 				<tr>
 					<th>Last Name:<span style="color: red">*</th>
-					<td><input type="text" name="lastName" placeHolder = "Enter Last Name"
+					<td><input type="text" name="lastName"
+						placeHolder="Enter Last Name"
 						value="<%=DataUtility.getStringData(bean.getLastName())%>"></td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("lastName", request)%></font></td>
 				</tr>
 				<tr>
 					<th>Login ID:<span style="color: red">*</th>
-					<td><input type="text" name="login" placeHolder = "Enter LoginId"
+					<td><input type="text" name="login"
+						placeHolder="Enter LoginId"
 						value="<%=DataUtility.getStringData(bean.getLogin())%>"></td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("login", request)%></font></td>
 				</tr>
 				<tr>
-					<th>Password:<span style="color: red">*</th>
-					<td><input type="text" name="password" placeHolder = "Enter Password"
-						value="<%=DataUtility.getStringData(bean.getPassword())%>"></td>
-					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("password", request)%></font></td>
+					<th align="left">Password<span style="color: red">*</span></th>
+
+					<td>
+						<div style="position: relative; width: 180px;">
+
+							<input type="password" id="password" name="password"
+								placeholder="Enter Password"
+								value="<%=DataUtility.getStringData(bean.getPassword())%>">
+							<br> <input type="checkbox"
+								onclick="pwd.type = this.checked ? 'text' : 'password'">
+							Show Password
+					</td>
+
+					</div>
+					</td>
+
+					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("password", request)%>
+					</font></td>
 				</tr>
+
+
 				<tr>
-					<th>Confirm Password:<span style="color: red">*</th> 
-					<td><input type="text" name="confirmPassword" placeHolder = "Enter Password Again"
-						value="<%=DataUtility.getStringData(bean.getConfirmPassword())%>"></td>
-					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("confirmPassword", request)%></font></td>
+					<th align="left">Confirm Password<span style="color: red">*</span></th>
+
+					<td>
+						<div style="position: relative; width: 260px;">
+
+							<input type="password" id="confirmPassword"
+								name="confirmPassword" placeholder="Enter Confirm Password"
+								value="<%=DataUtility.getStringData(bean.getPassword())%>">
+							<br> <input type="checkbox"
+								onclick="cpwd.type = this.checked ? 'text' : 'password'">
+							Show Password
+					</td>
+
+					</div>
+					</td>
+
+					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("confirmPassword", request)%>
+					</font></td>
 				</tr>
-				<tr>
-					<th>DOB:<span style="color: red">*</th>
-					<td><input type="date" name="dob" placeHolder = "Enter DOB"
-						value="<%=DataUtility.getDateString(bean.getDob())%>"
-						style="width: 98%"></td>
-					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("dob", request)%></font></td>
+				<th>DOB:<span style="color: red">*</th>
+				<td><input type="date" name="dob" placeHolder="Enter DOB"
+					value="<%=DataUtility.getDateString(bean.getDob())%>"></td>
+				<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("dob", request)%></font></td>
 				</tr>
 				<tr>
 					<th>Gender:<span style="color: red">*</th>
@@ -92,15 +124,16 @@
 				</tr>
 				<tr>
 					<th>Mobile:<span style="color: red">*</th>
-					<td><input type="text" name="mobileNo" placeHolder = "Enter Mobile No."
+					<td><input type="text" name="mobileNo"
+						placeHolder="Enter Mobile No."
 						value="<%=DataUtility.getStringData(bean.getMobileNo())%>"></td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("mobileNo", request)%></font></td>
 				</tr>
-				<tr>  
+				<tr>
 					<td></td>
 					<td><input type="submit" name="operation"
-						value="<%=UserRegistrationCtl.OP_SIGN_UP%>"> 
-						<input type="submit" name="operation"
+						value="<%=UserRegistrationCtl.OP_SIGN_UP%>"> <input
+						type="submit" name="operation"
 						value="<%=UserRegistrationCtl.OP_RESET%>"></td>
 				</tr>
 			</table>

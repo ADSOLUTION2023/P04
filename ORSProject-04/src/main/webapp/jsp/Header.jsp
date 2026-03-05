@@ -88,13 +88,13 @@ pageEncoding="ISO-8859-1"%>
 	<b>|</b>
 	<a href="<%=ORSView.STUDENT_LIST_CTL%>"><b>Student List</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.MARKSHEET_CTL%>"><b>Add MarkSheet</b></a>
+	<a href="<%=ORSView.MARKSHEET_CTL%>"><b>Add Marksheet</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.MARKSHEET_LIST_CTL%>"><b>MarkSheet List</b></a>
+	<a href="<%=ORSView.MARKSHEET_LIST_CTL%>"><b>Marksheet List</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>MarkSheet Merit List</b></a>
+	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>Marksheet Merit List</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.GET_MARKSHEET_CTL%>"><b> Get MarkSheet</b></a>
+	<a href="<%=ORSView.GET_MARKSHEET_CTL%>"><b> Get Marksheet</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.JAVA_DOC%>" target="blank"><b>Java Doc</b></a>
 	<b>|</b>
@@ -103,6 +103,10 @@ pageEncoding="ISO-8859-1"%>
     <a href="<%=ORSView.PATIENT_CTL%>"><b>Register Patient</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.PATIENT_LIST_CTL%>"><b>Patient List</b></a>
+	<b>|</b>
+	<a href="<%=ORSView.HOSPITAL_CTL%>"><b>Register Hospital</b></a>
+	<b>|</b>
+	<a href="<%=ORSView.HOSPITAL_LIST_CTL%>"><b>Hospital List</b></a>
 	<b>|</b>
 	<%
 		}
