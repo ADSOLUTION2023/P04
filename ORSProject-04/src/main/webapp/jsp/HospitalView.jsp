@@ -54,7 +54,7 @@
 			<table>
 
 				<tr>
-					<th align="left">Hospital Name<span style="color: red">*</span></th>
+					<th align="right">Hospital Name<span style="color: red">*</span></th>
 					<td><input type="text" name="name"
 						placeholder="Enter Hospital Name"
 						value="<%=DataUtility.getStringData(bean.getName())%>"></td>
@@ -63,7 +63,7 @@
 				</tr>
 
 				<tr>
-					<th align="left">Address<span style="color: red">*</span></th>
+					<th align="right">Address<span style="color: red">*</span></th>
 					<td><input type="text" name="address"
 						placeholder="Enter Address"
 						value="<%=DataUtility.getStringData(bean.getAddress())%>">
@@ -73,7 +73,7 @@
 				</tr>
 
 				<tr>
-					<th align="left">City<span style="color: red">*</span></th>
+					<th align="right">City<span style="color: red">*</span></th>
 					<td><input type="text" name="city" placeholder="Enter City"
 						value="<%=DataUtility.getStringData(bean.getCity())%>"></td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("city", request)%>
@@ -81,7 +81,7 @@
 				</tr>
 
 				<tr>
-					<th align="left">Phone<span style="color: red">*</span></th>
+					<th align="right">Phone<span style="color: red">*</span></th>
 					<td><input type="text" name="phone" maxlength="10"
 						placeholder="Enter Phone Number"
 						value="<%=DataUtility.getStringData(bean.getPhone())%>"></td>
@@ -90,7 +90,7 @@
 				</tr>
 
 				<tr>
-					<th align="left">Email<span style="color: red">*</span></th>
+					<th align="right">Email<span style="color: red">*</span></th>
 					<td><input type="text" name="email" placeholder="Enter Email"
 						value="<%=DataUtility.getStringData(bean.getEmail())%>"></td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("email", request)%>
@@ -102,9 +102,9 @@
 				<%
 					if (bean != null && bean.getId() > 0) {
 				%>
-				<td align="left" colspan="2"><input type="submit"
-					name="operation" value="<%=HospitalCtl.OP_UPDATE%>"> <input
-					type="submit" name="operation" value="<%=HospitalCtl.OP_CANCEL%>">
+				<td align="left" colspan="2">
+				<input type="submit" name="operation" value="<%=HospitalCtl.OP_UPDATE%>"> 
+				<input type="submit" name="operation" value="<%=HospitalCtl.OP_CANCEL%>">
 					<%
 						} else {
 					%>

@@ -265,7 +265,7 @@ public class HospitalModel {
 	    Connection conn = null;
 	    ArrayList<HospitalBean> list = new ArrayList<>();
 
-	    StringBuffer sql = new StringBuffer("SELECT * FROM ST_HOSPITAL WHERE 1=1");
+	    StringBuffer sql = new StringBuffer("SELECT * FROM hospital WHERE 1=1");
 
 	    if (bean != null) {
 

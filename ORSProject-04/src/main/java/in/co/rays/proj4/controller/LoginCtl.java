@@ -22,128 +22,129 @@ import in.co.rays.proj4.util.ServletUtility;
 /**
  * LoginCtl Servlet.
  * <p>
- * This controller handles user login, logout, and redirects to registration.
- * It validates login credentials, authenticates the user, and manages the session.
+ * This controller handles user login, logout, and redirects to registration. It
+ * validates login credentials, authenticates the user, and manages the session.
  * </p>
  * 
  * Author: Amit Chandsarkar
+ * 
  * @version 1.0
  */
 
 @WebServlet(name = "LoginCtl", urlPatterns = { "/LoginCtl" })
 public class LoginCtl extends BaseCtl {
 
-    public static final String OP_SIGN_IN = "Sign In";
-    public static final String OP_SIGN_UP = "Sign Up";
+	public static final String OP_SIGN_IN = "Sign In";
+	public static final String OP_SIGN_UP = "Sign Up";
 
-    /**
-     * Validates the login input fields.
-     * Checks for null or invalid email for login and empty password.
-     *
-     * @param request HttpServletRequest
-     * @return boolean true if valid, false otherwise
-     */
-    @Override
-    protected boolean validate(HttpServletRequest request) {
-        boolean pass = true;
+	/**
+	 * Validates the login input fields. Checks for null or invalid email for login
+	 * and empty password.
+	 *
+	 * @param request HttpServletRequest
+	 * @return boolean true if valid, false otherwise
+	 */
+	@Override
+	protected boolean validate(HttpServletRequest request) {
+		boolean pass = true;
 
-        String op = request.getParameter("operation");
+		String op = request.getParameter("operation");
+		System.out.println("Operation IN LOGIN : " + op);
+		if (OP_SIGN_UP.equals(op) || OP_LOG_OUT.equals(op)) {
+			return pass;
+		}
 
-        if (OP_SIGN_UP.equals(op) || OP_LOG_OUT.equals(op)) {
-            return pass;
-        }
+		if (DataValidator.isNull(request.getParameter("login"))) {
+			request.setAttribute("login", PropertyReader.getValue("error.require", "login"));
+			pass = false;
+		} else if (!DataValidator.isEmail(request.getParameter("login"))) {
+			request.setAttribute("login", PropertyReader.getValue("error.email", "Login"));
+			pass = false;
+		}
 
-        if (DataValidator.isNull(request.getParameter("loginId"))) {
-            request.setAttribute("loginId", PropertyReader.getValue("error.require", "Login Id"));
-            pass = false;
-        } else if (!DataValidator.isEmail(request.getParameter("login"))) {
-            request.setAttribute("login", PropertyReader.getValue("error.email", "Login "));
-            pass = false;
-        }
+		if (DataValidator.isNull(request.getParameter("password"))) {
+			request.setAttribute("password", PropertyReader.getValue("error.require", "password"));
+			pass = false;
+		}
 
-        if (DataValidator.isNull(request.getParameter("password"))) {
-            request.setAttribute("password", PropertyReader.getValue("error.require", "Password"));
-            pass = false;
-        }
+		return pass;
+	}
 
-        return pass;
-    }
+	/**
+	 * Populates a UserBean from request parameters.
+	 *
+	 * @param request HttpServletRequest
+	 * @return BaseBean containing login and password
+	 */
+	@Override
+	protected BaseBean populateBean(HttpServletRequest request) {
+		UserBean bean = new UserBean();
 
-    /**
-     * Populates a UserBean from request parameters.
-     *
-     * @param request HttpServletRequest
-     * @return BaseBean containing login and password
-     */
-    @Override
-    protected BaseBean populateBean(HttpServletRequest request) {
-        UserBean bean = new UserBean();
+		bean.setLogin(DataUtility.getString(request.getParameter("login")));
+		bean.setPassword(DataUtility.getString(request.getParameter("password")));
 
-        bean.setLogin(DataUtility.getString(request.getParameter("login")));
-        bean.setPassword(DataUtility.getString(request.getParameter("password")));
+		return bean;
+	}
 
-        return bean;
-    }
+	/**
+	 * Handles HTTP GET requests. Handles logout operation and forwards to the login
+	 * view.
+	 *
+	 * @param request  HttpServletRequest
+	 * @param response HttpServletResponse
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-    /**
-     * Handles HTTP GET requests.
-     * Handles logout operation and forwards to the login view.
-     *
-     * @param request HttpServletRequest
-     * @param response HttpServletResponse
-     * @throws ServletException
-     * @throws IOException
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String op = DataUtility.getString(request.getParameter("operation"));
 
-        HttpSession session = request.getSession();
-        String op = DataUtility.getString(request.getParameter("operation"));
+		if (OP_LOG_OUT.equals(op)) {
+			session.invalidate();
+			ServletUtility.setSuccessMessage("Logout Successful!", request);
+		}
 
-        if (OP_LOG_OUT.equals(op)) {
-            session.invalidate();
-            ServletUtility.setSuccessMessage("Logout Successful!", request);
-        }
+		ServletUtility.forward(getView(), request, response);
+	}
 
-        ServletUtility.forward(getView(), request, response);
-    }
+	/**
+	 * Handles HTTP POST requests. Performs login, authentication, and redirects to
+	 * appropriate views.
+	 *
+	 * @param request  HttpServletRequest
+	 * @param response HttpServletResponse
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-    /**
-     * Handles HTTP POST requests.
-     * Performs login, authentication, and redirects to appropriate views.
-     *
-     * @param request HttpServletRequest
-     * @param response HttpServletResponse
-     * @throws ServletException
-     * @throws IOException
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		UserModel model = new UserModel();
+		RoleModel role = new RoleModel();
+		String op = DataUtility.getString(request.getParameter("operation"));
 
-        HttpSession session = request.getSession();
-        UserModel model = new UserModel();
-        RoleModel role = new RoleModel();
-        String op = DataUtility.getString(request.getParameter("operation"));
+		if (OP_SIGN_IN.equalsIgnoreCase(op)) {
+			UserBean bean = (UserBean) populateBean(request);
 
-        if (OP_SIGN_IN.equalsIgnoreCase(op)) {
-            UserBean bean = (UserBean) populateBean(request);
+			try {
+				bean = model.authenticate(bean.getLogin(), bean.getPassword());
 
-            try {
-                bean = model.authenticate(bean.getLogin(), bean.getPassword());
+				if (bean != null) {
+					session.setAttribute("user", bean);
 
-                if (bean != null) {
-                    session.setAttribute("user", bean);
-                    
-                    RoleBean rolebean = role.findByPk(bean.getRoleId());
-                    if (rolebean != null) {
-                        session.setAttribute("role", rolebean.getName());
-                    }
+					RoleBean rolebean = role.findByPk(bean.getRoleId());
+					if (rolebean != null) {
+						session.setAttribute("role", rolebean.getName());
+					}
 
-                    String uri = (String) request.getParameter("uri");
+					String uri = (String) request.getParameter("uri");
 					if (uri == null || "null".equalsIgnoreCase(uri)) {
-						//System.out.println("LOGIN SUCCESS");
+						// System.out.println("LOGIN SUCCESS");
 						ServletUtility.redirect(ORSView.WELCOME_CTL, request, response);
 						return;
 					} else {
@@ -151,34 +152,34 @@ public class LoginCtl extends BaseCtl {
 						return;
 					}
 
-                } else {
-                    bean = (UserBean) populateBean(request);
-                    ServletUtility.setBean(bean, request);
-                    ServletUtility.setErrorMessage("Invalid LoginId And Password", request);
-                }
+				} else {
+					bean = (UserBean) populateBean(request);
+					ServletUtility.setBean(bean, request);
+					ServletUtility.setErrorMessage("Invalid LoginId And Password", request);
+				}
 
-            } catch (ApplicationException e) {
+			} catch (ApplicationException e) {
 				e.printStackTrace();
-				//ServletUtility.setErrorMessage("Database Server Down...", request);
+				// ServletUtility.setErrorMessage("Database Server Down...", request);
 				ServletUtility.handleExceptionDB(getView(), request, response);
-                return;
-            }
+				return;
+			}
 
-        } else if (OP_SIGN_UP.equalsIgnoreCase(op)) {
-            ServletUtility.redirect(ORSView.USER_REGISTRATION_CTL, request, response);
-            return;
-        }
+		} else if (OP_SIGN_UP.equalsIgnoreCase(op)) {
+			ServletUtility.redirect(ORSView.USER_REGISTRATION_CTL, request, response);
+			return;
+		}
 
-        ServletUtility.forward(getView(), request, response);
-    }
+		ServletUtility.forward(getView(), request, response);
+	}
 
-    /**
-     * Returns the login view page.
-     *
-     * @return String view page
-     */
-    @Override
-    protected String getView() {
-        return ORSView.LOGIN_VIEW;
-    }
+	/**
+	 * Returns the login view page.
+	 *
+	 * @return String view page
+	 */
+	@Override
+	protected String getView() {
+		return ORSView.LOGIN_VIEW;
+	}
 }

@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 public final class JDBCDataSource {
-	
+
 	private static JDBCDataSource jds = null;
 	private static ComboPooledDataSource cpds = null;
 
@@ -23,9 +23,9 @@ public final class JDBCDataSource {
 			cpds.setJdbcUrl(rb.getString("url"));
 			cpds.setUser(rb.getString("username"));
 			cpds.setPassword(rb.getString("password"));
-			cpds.setInitialPoolSize(Integer.parseInt(rb.getString("initialpoolsize")));
-			cpds.setAcquireIncrement(Integer.parseInt(rb.getString("acquireincrement")));
-			cpds.setMaxPoolSize(Integer.parseInt(rb.getString("maxpoolsize")));
+			cpds.setInitialPoolSize(Integer.parseInt(rb.getString("initialPoolSize")));
+			cpds.setAcquireIncrement(Integer.parseInt(rb.getString("acquireIncrement")));
+			cpds.setMaxPoolSize(Integer.parseInt(rb.getString("maxPoolSize")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

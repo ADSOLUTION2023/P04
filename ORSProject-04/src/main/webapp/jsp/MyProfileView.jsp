@@ -43,7 +43,7 @@
 
             <table>
                 <tr>
-                    <th align="left">Login Id<span style="color: red">*</span></th>
+                    <th align="right">Login Id<span style="color: red">*</span></th>
                     <td>
                         <input type="text" name="login" placeholder="Enter Email ID"
                             value="<%=DataUtility.getStringData(bean.getLogin())%>" readonly="readonly">
@@ -56,7 +56,7 @@
                 </tr>
 
                 <tr>
-                    <th align="left">First Name<span style="color: red">*</span></th>
+                    <th align="right">First Name<span style="color: red">*</span></th>
                     <td>
                         <input type="text" name="firstName" placeholder="Enter First Name"
                             value="<%=DataUtility.getStringData(bean.getFirstName())%>">
@@ -69,7 +69,7 @@
                 </tr>
 
                 <tr>
-                    <th align="left">Last Name<span style="color: red">*</span></th>
+                    <th align="right">Last Name<span style="color: red">*</span></th>
                     <td>
                         <input type="text" name="lastName" placeholder="Enter Last Name"
                             value="<%=DataUtility.getStringData(bean.getLastName())%>">
@@ -82,7 +82,7 @@
                 </tr>
 
                 <tr>
-                    <th align="left">Date of Birth<span style="color: red">*</span></th>
+                    <th align="right">Date of Birth<span style="color: red">*</span></th>
                     <td><input type="text" id="udate" name="dob"
 					    placeholder="Select Date of Birth"
 						value="<%=DataUtility.getDateString(bean.getDob())%>"></td>
@@ -94,7 +94,7 @@
                 </tr>
 
                 <tr>
-                    <th align="left">Gender<span style="color: red">*</span></th>
+                    <th align="right">Gender<span style="color: red">*</span></th>
                     <td>
                         <%
                             HashMap<String, String> map = new HashMap<String, String>();
@@ -112,7 +112,7 @@
                 </tr>
 
                 <tr>
-                    <th align="left">Mobile No<span style="color: red">*</span></th>
+                    <th align="right">Mobile No<span style="color: red">*</span></th>
                     <td>
                         <input type="text" name="mobileNo" maxlength="10" placeholder="Enter Mobile No."
                             value="<%=DataUtility.getStringData(bean.getMobileNo())%>">

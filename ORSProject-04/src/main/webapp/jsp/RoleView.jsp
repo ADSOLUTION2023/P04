@@ -52,7 +52,7 @@
 
 			<table>
 				<tr>
-					<th align="left">Name<span style="color: red">*</span></th>
+					<th align="right">Name<span style="color: red">*</span></th>
 					<td align="center"><input type="text" name="name"
 						placeholder="Enter Role Name"
 						value="<%=DataUtility.getStringData(bean.getName())%>"></td>
@@ -61,8 +61,7 @@
 				</tr>
 				<tr>
 					<th align="left">Description<span style="color: red">*</span></th>
-					<td align="center"><textarea
-							style="width: 170px; resize: none;" name="description" rows="3"
+					<td align="center"><textarea style="width: 170px; resize: none;" name="description" rows="3"
 							placeholder="Enter Short description"><%=DataUtility.getStringData(bean.getDescription()).trim()%></textarea>
 					</td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("description", request)%>

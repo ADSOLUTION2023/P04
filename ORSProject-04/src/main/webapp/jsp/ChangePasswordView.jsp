@@ -40,7 +40,7 @@
 
             <table>
                 <tr>
-                    <th align="left">Old Password<span style="color: red">*</span></th>
+                    <th align="right">Old Password<span style="color: red">*</span></th>
                     <td align="center">
                         <input type="password" name="oldPassword" placeholder="Enter Old Password"
                             value="<%=DataUtility.getString(request.getParameter("oldPassword") == null ? "" : DataUtility.getString(request.getParameter("oldPassword")))%>">
@@ -53,7 +53,7 @@
                 </tr>
 
                 <tr>
-                    <th align="left">New Password<span style="color: red">*</span></th>
+                    <th align="right">New Password<span style="color: red">*</span></th>
                     <td align="center">
                         <input type="password" name="newPassword" placeholder="Enter New Password"
                             value="<%=DataUtility.getString(request.getParameter("newPassword") == null ? "" : DataUtility.getString(request.getParameter("newPassword")))%>">
@@ -66,7 +66,7 @@
                 </tr>
 
                 <tr>
-                    <th align="left">Confirm Password<span style="color: red">*</span></th>
+                    <th align="right">Confirm Password<span style="color: red">*</span></th>
                     <td align="center">
                         <input type="password" name="confirmPassword" placeholder="Enter Confirm Password"
                             value="<%=DataUtility.getString(request.getParameter("confirmPassword") == null ? "" : DataUtility.getString(request.getParameter("confirmPassword")))%>">
@@ -85,7 +85,7 @@
 
                 <tr>
                     <th></th>
-                    <td align="left" colspan="2">
+                    <td align="right" colspan="2">
                         <input type="submit" name="operation" value="<%=ChangePasswordCtl.OP_SAVE%>">
                         &nbsp;
                         <input type="submit" name="operation" value="<%=ChangePasswordCtl.OP_CHANGE_MY_PROFILE%>">
