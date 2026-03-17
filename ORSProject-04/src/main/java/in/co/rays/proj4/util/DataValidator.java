@@ -142,6 +142,21 @@ public class DataValidator {
 			return false;
 		}
 		}
+	
+	public static boolean isMobileNo(String val) {
+
+		String mobilereg = "^[6-9][0-9]{9}$";
+
+		if (isNotNull(val)) {
+			try {
+				return val.matches(mobilereg);
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		} else {
+			return false;
+		}
+		}
 	public static boolean isBalance(String val) {
 
 		String balancereg = "^[6-9][0-9]{9}$";

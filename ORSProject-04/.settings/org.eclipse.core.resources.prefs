@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/java/in/co/rays/proj4/controller/DoctorCtl.java=UTF-8
 encoding//src/main/java/in/co/rays/proj4/controller/FrontController.java=UTF-8
 encoding//src/main/java/in/co/rays/proj4/controller/HospitalCtl.java=UTF-8
 encoding//src/main/java/in/co/rays/proj4/controller/PatientCtl.java=UTF-8

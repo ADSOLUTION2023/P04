@@ -114,6 +114,16 @@ public interface ORSView {
 	public String HOSPITAL_CTL = APP_CONTEXT + "/ctl/HospitalCtl";
 	public String HOSPITAL_LIST_VIEW = PAGE_FOLDER + "/HospitalListView.jsp";
 	public String HOSPITAL_LIST_CTL = APP_CONTEXT + "/ctl/HospitalListCtl";
+	public String DOCTOR_VIEW = PAGE_FOLDER + "/DoctorView.jsp";
+	public String DOCTOR_CTL = APP_CONTEXT + "/ctl/DoctorCtl";
+	public String DOCTOR_LIST_VIEW = PAGE_FOLDER + "/DoctorListView.jsp";
+	public String DOCTOR_LIST_CTL = APP_CONTEXT + "/ctl/DoctorListCtl";
+	
+	public String SPC_VIEW = PAGE_FOLDER + "/SpcView.jsp";
+	public String SPC_CTL = APP_CONTEXT + "/ctl/SpcCtl";
+	public String SPC_LIST_VIEW = PAGE_FOLDER + "/SpcListView.jsp";
+	public String SPC_LIST_CTL = APP_CONTEXT + "/ctl/SpcsListCtl";
+
 
 	/** Error page */
 	public String ERROR_VIEW = PAGE_FOLDER + "/ErrorView.jsp";

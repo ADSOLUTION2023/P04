@@ -3,7 +3,7 @@
 <%@page import="in.co.rays.proj4.controller.LoginCtl"%>
 <%@page import="in.co.rays.proj4.bean.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +45,7 @@ pageEncoding="ISO-8859-1"%>
 		}
 	%>
 
-    <%
+	<%
 		if (user != null) {
 	%>
 	<%
@@ -92,7 +92,8 @@ pageEncoding="ISO-8859-1"%>
 	<b>|</b>
 	<a href="<%=ORSView.MARKSHEET_LIST_CTL%>"><b>Marksheet List</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>Marksheet Merit List</b></a>
+	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>Marksheet
+			Merit List</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.GET_MARKSHEET_CTL%>"><b> Get Marksheet</b></a>
 	<b>|</b>
@@ -100,7 +101,7 @@ pageEncoding="ISO-8859-1"%>
 	<b>|</b>
 	<a href="<%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>"><b>Logout</b></a>
 	<b>|</b>
-    <a href="<%=ORSView.PATIENT_CTL%>"><b>Register Patient</b></a>
+	<a href="<%=ORSView.PATIENT_CTL%>"><b>Register Patient</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.PATIENT_LIST_CTL%>"><b>Patient List</b></a>
 	<b>|</b>
@@ -108,12 +109,22 @@ pageEncoding="ISO-8859-1"%>
 	<b>|</b>
 	<a href="<%=ORSView.HOSPITAL_LIST_CTL%>"><b>Hospital List</b></a>
 	<b>|</b>
+	<a href="<%=ORSView.DOCTOR_CTL%>"><b>Register Doctor</b></a>
+	<b>|</b>
+	<a href="<%=ORSView.DOCTOR_LIST_CTL%>"><b>Doctor List</b></a>
+	<b>|</b>
+	<a href="<%=ORSView.SPC_CTL%>"><b>Add SPC</b></a>
+	<b>|</b>
+	<a href="<%=ORSView.SPC_LIST_CTL%>"><b>SPC List</b></a>
+	<b>|</b>
 	<%
 		}
 	%>
-	
-	<% if(user.getRoleId() == RoleBean.KIOSK) { %>
-	
+
+	<%
+		if (user.getRoleId() == RoleBean.KIOSK) {
+	%>
+
 	<a href="<%=ORSView.MY_PROFILE_CTL%>"><b>My Profile</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.CHANGE_PASSWORD_CTL%>"><b>Change Password</b></a>
@@ -142,7 +153,8 @@ pageEncoding="ISO-8859-1"%>
 	<b>|</b>
 	<a href="<%=ORSView.MARKSHEET_LIST_CTL%>"><b>Marksheet List</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>Marksheet Merit List</b></a>
+	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>Marksheet
+			Merit List</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.GET_MARKSHEET_CTL%>"><b> Get Marksheet</b></a>
 	<b>|</b>
@@ -150,14 +162,16 @@ pageEncoding="ISO-8859-1"%>
 	<b>|</b>
 	<a href="<%=ORSView.TIMETABLE_LIST_CTL%>"><b>Timetable List</b></a>
 	<b>|</b>
-	
+
 	<a href="<%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>"><b>Logout</b></a>
 	<%
 		}
 	%>
-	
-	
-	<% if(user.getRoleId() == RoleBean.FACULTY) { %>
+
+
+	<%
+		if (user.getRoleId() == RoleBean.FACULTY) {
+	%>
 	<a href="<%=ORSView.MY_PROFILE_CTL%>"><b>My Profile</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.CHANGE_PASSWORD_CTL%>"><b>Change Password</b></a>
@@ -168,44 +182,48 @@ pageEncoding="ISO-8859-1"%>
 	<b>|</b>
 	<a href="<%=ORSView.MARKSHEET_LIST_CTL%>"><b>Marksheet List</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>Marksheet Merit List</b></a>
+	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>Marksheet
+			Merit List</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.GET_MARKSHEET_CTL%>"><b> Get Marksheet</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.TIMETABLE_LIST_CTL%>"><b>Timetable List</b></a>
 	<b>|</b>
-	
+
 	<a href="<%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>"><b>Logout</b></a>
 	</h3>
 	<%
 		}
 	%>
-	
-	
-	<% if(user.getRoleId() == RoleBean.STUDENT) { %>
+
+
+	<%
+		if (user.getRoleId() == RoleBean.STUDENT) {
+	%>
 	<a href="<%=ORSView.MY_PROFILE_CTL%>"><b>My Profile</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.CHANGE_PASSWORD_CTL%>"><b>Change Password</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.MARKSHEET_LIST_CTL%>"><b>Marksheet List</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>Marksheet Merit List</b></a>
+	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>Marksheet
+			Merit List</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.GET_MARKSHEET_CTL%>"><b> Get Marksheet</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.TIMETABLE_LIST_CTL%>"><b>Timetable List</b></a>
 	<b>|</b>
-	
+
 	<a href="<%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>"><b>Logout</b></a>
-	
+
 	<%
 		}
 	%>
-	
+
 	<%
 		}
 	%>
-	
+
 	<hr>
 </body>
 </html>
