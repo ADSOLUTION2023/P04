@@ -103,15 +103,11 @@
 					</font></td>
 				</tr>
 				<tr>
-				<tr>
 					<th align="right">Specialization<span style="color: red">*</span></th>
-
 					<td><%=HTMLUtility.getList("spcId", String.valueOf(bean.getSpcId()), spcList)%>
 					</td>
-
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("spcId", request)%>
 					</font></td>
-
 				</tr>
 				<th align="right">Consultation Fee<span style="color: red">*</span></th>
 				<td><input type="text" name="consultationFee"

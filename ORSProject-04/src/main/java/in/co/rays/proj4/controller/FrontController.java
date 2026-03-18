@@ -46,14 +46,14 @@ public class FrontController implements Filter {
 	    HttpServletRequest request = (HttpServletRequest) req;
 	    HttpServletResponse response = (HttpServletResponse) resp;
 
-	    String uri = request.getRequestURI();
-
-	    // ⭐ Allow Login & Static Resources
-	    if (uri.contains("LoginCtl") || uri.contains("LoginView") || uri.contains("/css/")
-	            || uri.contains("/js/") || uri.contains("/images/")) {
-	        chain.doFilter(req, resp);
-	        return;
-	    }
+		/*
+		 * String uri = request.getRequestURI();
+		 */
+		/*
+		 * // ⭐ Allow Login & Static Resources if (uri.contains("LoginCtl") ||
+		 * uri.contains("LoginView") || uri.contains("/css/") || uri.contains("/js/") ||
+		 * uri.contains("/images/")) { chain.doFilter(req, resp); return; }
+		 */
 
 	    HttpSession session = request.getSession(false);
 

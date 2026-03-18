@@ -45,7 +45,7 @@ public class DoctorCtl extends BaseCtl {
 			request.setAttribute("spcList", spcList);
 		} catch (ApplicationException e) {
 			request.setAttribute("spcList", new ArrayList<>());
-			ServletUtility.handleExceptionDB(getView(), request, response);
+//			ServletUtility.handleExceptionDB(getView(), request, response);
 		}
 		log.debug("DoctorCtl Method preload ended");
 	}
