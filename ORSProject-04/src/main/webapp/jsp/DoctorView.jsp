@@ -104,10 +104,19 @@
 				</tr>
 				<tr>
 					<th align="right">Specialization<span style="color: red">*</span></th>
-					<td><%=HTMLUtility.getList("spcId", String.valueOf(bean.getSpcId()), spcList)%>
+					<td>
+						<%
+							HashMap<String, String> map = new HashMap<String, String>();
+							map.put("Cardiologist", "Cardiologist");
+							map.put("Orthopedic", "Orthopedic");
+							map.put("Onchologist", "Onchologist");
+							map.put("Pediatric", "Pedriatic");
+							map.put("Pyhsician", "Physician");
+
+							String htmlList = HTMLUtility.getList("Specialization", bean.getSpcId(), map);
+						%> <%=htmlList%>
 					</td>
-					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("spcId", request)%>
-					</font></td>
+					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("gender", request)%></font></td>
 				</tr>
 				<th align="right">Consultation Fee<span style="color: red">*</span></th>
 				<td><input type="text" name="consultationFee"

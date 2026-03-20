@@ -113,10 +113,13 @@
 	<b>|</b>
 	<a href="<%=ORSView.DOCTOR_LIST_CTL%>"><b>Doctor List</b></a>
 	<b>|</b>
-	<a href="<%=ORSView.SPC_CTL%>"><b>Add SPC</b></a>
+	<a href="<%=ORSView.SHOPPING_CTL%>"><b>Add Shopping</b></a>
+	<b>|</b>
+	
+	<%-- <a href="<%=ORSView.SPC_CTL%>"><b>Add SPC</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.SPC_LIST_CTL%>"><b>SPC List</b></a>
-	<b>|</b>
+	<b>|</b> --%>
 	<%
 		}
 	%>

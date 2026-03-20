@@ -119,6 +119,9 @@ public interface ORSView {
 	public String DOCTOR_LIST_VIEW = PAGE_FOLDER + "/DoctorListView.jsp";
 	public String DOCTOR_LIST_CTL = APP_CONTEXT + "/ctl/DoctorListCtl";
 	
+	public String SHOPPING_VIEW = PAGE_FOLDER + "/ShoppingView.jsp";
+	public String SHOPPING_CTL = APP_CONTEXT + "/ctl/ShoppingCtl";
+	
 	public String SPC_VIEW = PAGE_FOLDER + "/SpcView.jsp";
 	public String SPC_CTL = APP_CONTEXT + "/ctl/SpcCtl";
 	public String SPC_LIST_VIEW = PAGE_FOLDER + "/SpcListView.jsp";
